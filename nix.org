@@ -354,6 +354,12 @@ index 6f6f86d..09e001a 100644
   userEmail = "jeffkreeftmeijer@gmail.com";
 #+end_src
 
+**** Use "main" as the default branch
+
+#+begin_src nix
+  extraConfig.init.defaultBranch = "main";
+#+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/git.nix=
