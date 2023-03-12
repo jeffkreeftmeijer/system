@@ -360,6 +360,12 @@ index 6f6f86d..09e001a 100644
   extraConfig.init.defaultBranch = "main";
 #+end_src
 
+**** Ignore ~.DS_Store~ files
+
+#+begin_src nix
+  ignores = ["DS_Store"];
+#+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/git.nix=
