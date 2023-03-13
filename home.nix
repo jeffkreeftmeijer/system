@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/home-manager.nix
+    ./modules/direnv.nix
     ./modules/git.nix
     ./modules/tmux.nix
     ./modules/zsh.nix

@@ -342,6 +342,32 @@ index 6f6f86d..09e001a 100644
  }
 #+end_src
 
+** direnv
+
+[[https://direnv.net][Direnv]] loads and unloads packages based on the curent directory to create per-project development environments.
+
+#+headers: :exports both
+#+begin_src shell
+  direnv --version
+#+end_src
+
+#+RESULTS:
+: 2.32.2
+
+*** Nix configuration
+
+The direnv program depends on a shell being enabled for it to hook in.
+This module enables zsh for that purpose:
+
+#+caption: =~/.config/nixkgs/modules/direnv.nix=
+#+headers: :tangle modules/direnv.nix
+#+begin_src nix
+  {
+    programs.direnv.enable = true;
+    programs.zsh.enable = true;
+  }
+#+end_src
+
 ** git
 
 #+headers: :exports both
@@ -647,6 +673,7 @@ Finally, the =home.nix= main configuration file imports all modules:
   {
     imports = [
       ./modules/home-manager.nix
+      ./modules/direnv.nix
       ./modules/git.nix
       ./modules/tmux.nix
       ./modules/zsh.nix
