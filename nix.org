@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       33B0C1A7-3CCE-46A3-90FE-71AE25517A15
+:ROAM_ALIASES: nix-config
+:END:
+#+title: Nix configuration
+#+author: Jeff Kreeftmeijer
