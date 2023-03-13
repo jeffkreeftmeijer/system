@@ -233,3 +233,12 @@ The =home.nix= file also sets up Home Manager to install and manage itself:
     };
   }
 #+end_src
+
+Finally, install Home Manager and apply the configuration:
+
+#+begin_src shell
+  nix run ~/.config/nixpkgs#homeConfigurations.jeffkreeftmeijer.activationPackage
+#+end_src
+
+Running the =activationPackage= generates a =flake.lock= file, which locks all packages to their currently installed versions for reproducability.
+It only lists Home Manager now, but installed packages will be added to the list when they're added.
