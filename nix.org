@@ -123,3 +123,89 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
 #+caption: =~/.config/nix/nix.conf=
 #+include: ~/.config/nix/nix.conf src nix
+
+* Home Manager
+
+** Set up Home Manager
+
+Set up a flake with the Home Manager template by running =flake new=:
+
+#+headers: :prologue rm ~/.config/nixpkgs/flake.nix
+#+begin_src shell
+  nix flake new ~/.config/nixpkgs -t github:nix-community/home-manager
+#+end_src
+
+#+RESULTS:
+
+#+caption: =~/.config/nixpkgs/flake.nix=
+#+headers: :exports none
+#+headers: :cache yes
+#+headers: :results scalar
+#+begin_src shell
+cat ~/.config/nixpkgs/flake.nix
+#+end_src
+
+#+RESULTS[fe747e4c90aed55a57a2f6a465840189a6e6d475]:
+#+begin_example
+{
+  description = "Home Manager configuration of Jane Doe";
+
+  inputs = {
+    # Specify the source of Home Manager and Nixpkgs.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      homeConfigurations.jdoe = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [ ./home.nix ];
+
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
+    };
+}
+#+end_example
+
+Then, update the output system and username and remove the boilerplate:
+
+#+caption: =~/.config/nixpkgs/flake.nix=
+#+headers: :tangle flake.nix
+#+begin_src nix
+  {
+    description = "Home Manager configuration";
+
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    outputs = { nixpkgs, home-manager, ... }:
+      let
+        system = "x86_64-darwin";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home.nix
+          ];
+        };
+      };
+  }
+#+end_src
