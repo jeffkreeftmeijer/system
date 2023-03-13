@@ -347,6 +347,13 @@ index 6f6f86d..09e001a 100644
 :header-args: :noweb-ref git-settings
 :END:
 
+**** Set the user name and email fields
+
+#+begin_src nix
+  userName = "Jeff Kreeftmeijer";
+  userEmail = "jeffkreeftmeijer@gmail.com";
+#+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/git.nix=
@@ -354,7 +361,10 @@ index 6f6f86d..09e001a 100644
 #+headers: :noweb yes
 #+begin_src nix
   {
-    programs.git.enable = true;
+    programs.git = {
+      enable = true;
+      <<git-settings>>
+    };
   }
 #+end_src
 

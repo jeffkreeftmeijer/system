@@ -1,3 +1,7 @@
 {
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Jeff Kreeftmeijer";
+    userEmail = "jeffkreeftmeijer@gmail.com";
+  };
 }
