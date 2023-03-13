@@ -209,3 +209,27 @@ Then, update the output system and username and remove the boilerplate:
       };
   }
 #+end_src
+
+For Home Manager's configuration, create =home.nix=.
+It lists your use name and home directory, but also the =stateVersion=, which determines the Home Manager release the configuration is compatible with.
+The =home.nix= file also sets up Home Manager to install and manage itself:
+
+#+caption: =~/.config/nixpkgs/home.nix=
+#+headers: :tangle home.nix
+#+begin_src nix
+  { config, pkgs, ... }:
+
+  {
+    home = {
+      username = "jeffkreeftmeijer";
+      homeDirectory = "/Users/jeffkreeftmeijer";
+      stateVersion = "22.11";
+      packages = with pkgs; [
+      ];
+    };
+
+    programs.home-manager = {
+      enable = true;
+    };
+  }
+#+end_src
