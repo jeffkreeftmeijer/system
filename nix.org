@@ -4,3 +4,122 @@
 :END:
 #+title: Nix configuration
 #+author: Jeff Kreeftmeijer
+
+* Nix
+
+** Install Nix
+
+Follow the [[https://nixos.org/download.html#nix-install-macos][install instructions for macOS]], which guides you through the installation:
+
+#+begin_src shell
+  sh <(curl -L https://nixos.org/nix/install)
+#+end_src
+
+#+headers: :exports both
+#+begin_src shell
+  nix --version
+#+end_src
+
+#+RESULTS[aee53fea06d27ba12af92e6a4854ff89c5117281]:
+: nix (Nix) 2.13.3
+
+** Run a program with Nix
+
+Use =nix run= to run a program with Nix.
+For example, to try [[https://fishshell.com][fish]]:
+
+#+begin_src shell
+  nix run nixpkgs#fish\
+      --extra-experimental-features nix-command \
+      --extra-experimental-features flakes
+#+end_src
+
+This fetches the fish package from [[https://github.com/NixOS/nixpkgs][nixpkgs]], downloads it to the Nix store and starts it.
+Although some fish files are found in the Nix store, fish isn't isnstalled on the main system after the Nix shell running it exits.
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+begin_src shell
+  ls /nix/store/ | grep fish
+#+end_src
+
+#+RESULTS[eea63388eadbbe78035a725abd3842aa30653221]:
+: 61zcpdy6dxr582jwzjnzi2vm8hyw97p6-fish-3.6.0.tar.xz.drv
+: 6h7nvjphylacsmqjxz9cz3jab835ga68-fish-3.6.0.drv
+: 9sbayh5pr3r8c9dh1navixin3psgvvyh-completion.fish
+: d9r2150gr3b605pnsn5hydjc4zjxxsfc-config.fish.appendix.drv
+: igsjkga6f9x3xd4l86phypx2jh4k92ks-completion.fish
+: rwscd4qmlsmxc1idj9pxc5ab8543nfww-__fish_build_paths_suffix.fish.drv
+: s1nbl9wxn68m846apki35iyiqrh4bkg5-fish-3.6.0
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+headers: :prologue exec 2>&1
+#+headers: :epilogue ":"
+#+begin_src shell
+  which fish
+#+end_src
+
+#+RESULTS[01feaaf4eb76f1144d4ca3f56c1333e553dd9064]:
+: fish not found
+
+** Extra experimental features
+
+The =nix run= command relies on the =nix-command= and =flakes= features. 
+As of src_shell{nix --version | cut -d' ' -f3}, both of these are experimental and disabled by default:
+They're enabled using the =--extra-experimental-features= flag:
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+headers: :prologue exec 2>&1
+#+headers: :epilogue ":"
+#+begin_src shell
+  nix run nixpkgs#fish
+#+end_src
+
+#+RESULTS[4fad5848704d1feb332d0a04f64ad9ef1ad1e36d]:
+: error: experimental Nix feature 'nix-command' is disabled; use '--extra-experimental-features nix-command' to override
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+headers: :prologue exec 2>&1
+#+headers: :epilogue ":"
+#+begin_src shell
+  nix run nixpkgs#fish\
+      --extra-experimental-features nix-command
+#+end_src
+
+#+RESULTS[d1b3fdc04ce92c33d4b81fdcecaac88c77e65ef9]:
+: error: experimental Nix feature 'flakes' is disabled; use '--extra-experimental-features flakes' to override
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+headers: :prologue exec 2>&1
+#+headers: :epilogue ":"
+#+begin_src shell
+  nix run nixpkgs#fish\
+      --extra-experimental-features nix-command \
+      --extra-experimental-features flakes
+#+end_src
+
+#+RESULTS[510f95eb10ca1709870b3ee9da687a852e72ddb6]:
+
+To enable these features globally, set =experimental-featurs= in =nix.conf=:
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+begin_src shell
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+#+end_src
+
+#+RESULTS[de1f90d1ff70c1f24cfcedec11dea87386110765]:
+
+#+caption: =~/.config/nix/nix.conf=
+#+include: ~/.config/nix/nix.conf src nix
