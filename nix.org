@@ -393,13 +393,25 @@ index 6f6f86d..09e001a 100644
 #+RESULTS:
 : tmux 3.3a
 
-*** Nix configuration
+*** Settings
 
+- Install an updated version of ncurses to [[id:B478D484-A76C-4271-87B7-3CD158DFFB71][fix issues with =tmux-256color= terminals]]
+
+  #+name: tmux-packages
+  #+begin_src nix
+    home.packages = [ pkgs.ncurses ];
+  #+end_src
+
+*** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/tmux.nix=
 #+headers: :tangle modules/tmux.nix
+#+headers: :noweb yes
 #+begin_src nix
+  { pkgs, ... }:
   {
+    <<tmux-packages>>
+
     programs.tmux.enable = true;
   }
 #+end_src
