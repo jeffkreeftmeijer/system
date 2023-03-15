@@ -456,6 +456,24 @@ index 6f6f86d..09e001a 100644
   enableCompletion = false;
 #+end_src
 
+**** [[id:5B2982FB-35B2-41A6-8824-11E41A8AD5C2][Add current git repository status to shell prompt]]
+
+#+begin_src nix
+    initExtra =
+    ''
+    source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
+    setopt PROMPT_SUBST
+    export PS1='%~ $(__git_ps1 "(%s) ")%# '
+    '';
+#+end_src
+
+Since this depends on git, we'll also add git to this module's =home.packages= list:
+
+#+name: zsh-packages
+#+begin_src nix
+  home.packages = [ pkgs.git ];
+#+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/zsh.nix=
@@ -465,6 +483,8 @@ index 6f6f86d..09e001a 100644
   { pkgs, ... }:
 
   {
+    <<zsh-packages>>
+
     programs.zsh = {
       enable = true;
       <<zsh-settings>>
