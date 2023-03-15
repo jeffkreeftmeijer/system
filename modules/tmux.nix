@@ -5,5 +5,6 @@
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
+    escapeTime = 0;
   };
 }

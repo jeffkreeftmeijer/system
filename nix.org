@@ -409,6 +409,13 @@ index 6f6f86d..09e001a 100644
     sensibleOnTop = false;
   #+end_src
 
+- [[id:F799F3F1-0AC3-4342-A3AB-51543BEC566B][Set =escape-time= to 0]]:
+
+  #+headers: :noweb-ref tmux-settings
+  #+begin_src nix
+    escapeTime = 0;
+  #+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/tmux.nix=
