@@ -215,7 +215,6 @@ It lists your use name and home directory, but also the =stateVersion=, which de
 The =home.nix= file also sets up Home Manager to install and manage itself:
 
 #+caption: =~/.config/nixpkgs/home.nix=
-#+headers: :tangle home.nix
 #+begin_src nix
   { config, pkgs, ... }:
 
@@ -224,8 +223,6 @@ The =home.nix= file also sets up Home Manager to install and manage itself:
       username = "jeffkreeftmeijer";
       homeDirectory = "/Users/jeffkreeftmeijer";
       stateVersion = "22.11";
-      packages = with pkgs; [
-      ];
     };
 
     programs.home-manager = {
@@ -248,16 +245,18 @@ It only lists Home Manager now, but installed packages will be added to the list
 To install a package, add it to =home.packages= in =home.nix=:
 
 #+begin_src diff
-index d3fa35b..21d67e1 100644
+diff --git a/home.nix b/home.nix
+index 6f6f86d..12f9efe 100644
 --- a/home.nix
 +++ b/home.nix
-@@ -6,6 +6,7 @@
+@@ -5,6 +5,7 @@
+     username = "jeffkreeftmeijer";
      homeDirectory = "/Users/jeffkreeftmeijer";
      stateVersion = "22.11";
-     packages = with pkgs; [
-+      git
-     ];
++    packages = [ pkgs.git ];
    };
+ 
+   programs.home-manager = {
 #+end_src
 
 Then, update the environment by running =home-manager switch=:
@@ -289,3 +288,26 @@ Activating setupLaunchAgents
 #+end_example
 
 * Modules
+
+* Summary
+
+Finally, the =home.nix= main configuration file imports all modules:
+
+#+caption: =~/.config/nixpkgs/home.nix=
+#+headers: :tangle home.nix
+#+headers: :noweb yes
+#+begin_src nix
+  { config, pkgs, ... }:
+
+  {
+    home = {
+      username = "jeffkreeftmeijer";
+      homeDirectory = "/Users/jeffkreeftmeijer";
+      stateVersion = "22.11";
+    };
+
+    programs.home-manager = {
+      enable = true;
+    };
+  }
+#+end_src
