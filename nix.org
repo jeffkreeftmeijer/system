@@ -289,6 +289,48 @@ Activating setupLaunchAgents
 
 * Modules
 
+** home-manager
+
+Home manager added itself to =home.nix=, but we're moving it to a module to keep program-specific settings out of the main file:
+
+#+caption: =~/.config/nixpkgs/modules/home-manager.nix=
+#+headers: :tangle modules/home-manager.nix
+#+headers: :noweb yes
+#+begin_src nix
+  { pkgs, ... }:
+
+  {
+    programs.home-manager.enable = true;
+  }
+#+end_src
+
+With the new module in place, import it in =home.nix= and remove the now duplicate =programs.home-manager=:
+
+#+begin_src diff
+diff --git a/home.nix b/home.nix
+index 6f6f86d..09e001a 100644
+--- a/home.nix
++++ b/home.nix
+@@ -1,13 +1,13 @@
+ { config, pkgs, ... }:
+ 
++imports = [
++  ./modules/home-manager.nix
++];
++
+ {
+   home = {
+     username = "jeffkreeftmeijer";
+     homeDirectory = "/Users/jeffkreeftmeijer";
+     stateVersion = "22.11";
+   };
+-
+-  programs.home-manager = {
+-    enable = true;
+-  };
+ }
+#+end_src
+
 * Summary
 
 Finally, the =home.nix= main configuration file imports all modules:
@@ -300,14 +342,14 @@ Finally, the =home.nix= main configuration file imports all modules:
   { config, pkgs, ... }:
 
   {
+    imports = [
+      ./modules/home-manager.nix
+    ];
+
     home = {
       username = "jeffkreeftmeijer";
       homeDirectory = "/Users/jeffkreeftmeijer";
       stateVersion = "22.11";
-    };
-
-    programs.home-manager = {
-      enable = true;
     };
   }
 #+end_src
