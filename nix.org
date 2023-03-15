@@ -402,6 +402,13 @@ index 6f6f86d..09e001a 100644
     home.packages = [ pkgs.ncurses ];
   #+end_src
 
+- Remove tmux-sensible from [[id:962506BA-E734-4609-8E81-93ACBBFCF964][Nix tmux defaults]]:
+
+  #+headers: :noweb-ref tmux-settings
+  #+begin_src nix
+    sensibleOnTop = false;
+  #+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/tmux.nix=
@@ -412,7 +419,10 @@ index 6f6f86d..09e001a 100644
   {
     <<tmux-packages>>
 
-    programs.tmux.enable = true;
+    programs.tmux = {
+      enable = true;
+      <<tmux-settings>>
+    };
   }
 #+end_src
 

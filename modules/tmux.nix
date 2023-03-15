@@ -2,5 +2,8 @@
 {
   home.packages = [ pkgs.ncurses ];
 
-  programs.tmux.enable = true;
+  programs.tmux = {
+    enable = true;
+    sensibleOnTop = false;
+  };
 }
