@@ -287,3 +287,5 @@ Creating home file links in /Users/jeffkreeftmeijer
 Activating onFilesChange
 Activating setupLaunchAgents
 #+end_example
+
+* Modules
