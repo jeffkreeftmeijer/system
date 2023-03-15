@@ -4,6 +4,7 @@
 :END:
 #+title: Nix configuration
 #+author: Jeff Kreeftmeijer
+#+options: toc:2
 
 * Nix
 
