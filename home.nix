@@ -5,6 +5,7 @@
     ./modules/home-manager.nix
     ./modules/git.nix
     ./modules/tmux.nix
+    ./modules/zsh.nix
   ];
 
   home = {
