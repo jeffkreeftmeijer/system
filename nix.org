@@ -435,6 +435,34 @@ index 6f6f86d..09e001a 100644
 #+caption: =~/.config/tmux/tmux.conf=
 #+include: ~/.config/tmux/tmux.conf src tmux
 
+** zsh
+
+#+headers: :exports both
+#+begin_src shell
+  zsh --version
+#+end_src
+
+#+RESULTS:
+: zsh 5.9 (x86_64-apple-darwin22.3.0)
+
+*** Nix configuration
+
+#+caption: =~/.config/nixpkgs/modules/zsh.nix=
+#+headers: :tangle modules/zsh.nix
+#+headers: :noweb yes
+#+begin_src nix
+  { pkgs, ... }:
+
+  {
+    programs.zsh.enable = true;
+  }
+#+end_src
+
+*** Generated configuration file
+
+#+caption: =~/.zshrc=
+#+include: ~/.zshrc src zsh
+
 * Summary
 
 Finally, the =home.nix= main configuration file imports all modules:
@@ -450,6 +478,7 @@ Finally, the =home.nix= main configuration file imports all modules:
       ./modules/home-manager.nix
       ./modules/git.nix
       ./modules/tmux.nix
+      ./modules/zsh.nix
     ];
 
     home = {
