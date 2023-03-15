@@ -6,6 +6,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = false;
+    historySubstringSearch.enable = true;
     initExtra =
     ''
     source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
