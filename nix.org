@@ -192,7 +192,6 @@ cat ~/.config/nixpkgs/flake.nix
 Then, update the output system and username and remove the boilerplate:
 
 #+caption: =~/.config/nixpkgs/flake.nix=
-#+headers: :tangle flake.nix
 #+begin_src nix
   {
     description = "Home Manager configuration";
@@ -365,6 +364,72 @@ This module enables zsh for that purpose:
   {
     programs.direnv.enable = true;
     programs.zsh.enable = true;
+  }
+#+end_src
+
+** emacs
+
+*** Nix configuration
+
+Use [[https://github.com/nix-community/emacs-overlay][emacs-overlay]] to install Emacs from source, based on the latest version on the master branch.
+To do this, add the overlay to the inputs in =flake.nix=:
+
+#+begin_src diff
+	  index 3e15177..7e7eebc 100644
+  --- a/flake.nix
+  +++ b/flake.nix
+  @@ -7,12 +7,16 @@
+	 url = "github:nix-community/home-manager";
+	 inputs.nixpkgs.follows = "nixpkgs";
+       };
+  +    emacs-overlay = {
+  +      url = "github:nix-community/emacs-overlay";
+  +      inputs.nixpkgs.follows = "nixpkgs";
+  +    }
+     };
+
+  -  outputs = { nixpkgs, home-manager, ... }:
+  +  outputs = { nixpkgs, home-manager, emacs-overlay, ... }:
+       let
+	 system = "x86_64-darwin";
+  -      pkgs = nixpkgs.legacyPackages.${system};
+  +      pkgs = nixpkgs.legacyPackages.${system}.extend(emacs-overlay.overlay);
+       in {
+	 homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
+	   inherit pkgs;
+#+end_src
+
+#+headers: :tangle flake.nix
+#+headers: :exports none
+#+begin_src nix
+  {
+    description = "Home Manager configuration";
+
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+      emacs-overlay = {
+        url = "github:nix-community/emacs-overlay";
+        inputs.nixpkgs.follows = "nixpkgs";
+      }
+    };
+
+    outputs = { nixpkgs, home-manager, emacs-overlay, ... }:
+      let
+        system = "x86_64-darwin";
+        pkgs = nixpkgs.legacyPackages.${system}.extend(emacs-overlay.overlay);
+      in {
+        homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home.nix
+          ];
+        };
+      };
   }
 #+end_src
 
