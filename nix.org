@@ -369,6 +369,16 @@ This module enables zsh for that purpose:
 
 ** emacs
 
+#+headers: :exports both
+#+headers: :results scalar
+#+headers: :eval foo
+#+begin_src shell
+  emacs --version | head -n1
+#+end_src
+
+#+RESULTS:
+: GNU Emacs 30.0.50
+
 *** Nix configuration
 
 Use [[https://github.com/nix-community/emacs-overlay][emacs-overlay]] to install Emacs from source, based on the latest version on the master branch.
@@ -385,7 +395,7 @@ To do this, add the overlay to the inputs in =flake.nix=:
   +    emacs-overlay = {
   +      url = "github:nix-community/emacs-overlay";
   +      inputs.nixpkgs.follows = "nixpkgs";
-  +    }
+  +    };
      };
 
   -  outputs = { nixpkgs, home-manager, ... }:
@@ -414,7 +424,7 @@ To do this, add the overlay to the inputs in =flake.nix=:
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay";
         inputs.nixpkgs.follows = "nixpkgs";
-      }
+      };
     };
 
     outputs = { nixpkgs, home-manager, emacs-overlay, ... }:
@@ -430,6 +440,19 @@ To do this, add the overlay to the inputs in =flake.nix=:
           ];
         };
       };
+  }
+#+end_src
+
+Then, add the Emacs module, which enables the program and switches the package to =emacsGit-nox=:
+
+#+caption: =~/.config/nixpkgs/modules/emacs.nix=
+#+headers: :tangle modules/emacs.nix
+#+headers: :noweb yes
+#+begin_src nix
+  { pkgs, ... }:
+  {
+    programs.emacs.enable = true;
+    programs.emacs.package = pkgs.emacsGit-nox;
   }
 #+end_src
 
@@ -739,6 +762,7 @@ Finally, the =home.nix= main configuration file imports all modules:
     imports = [
       ./modules/home-manager.nix
       ./modules/direnv.nix
+      ./modules/emacs.nix
       ./modules/git.nix
       ./modules/tmux.nix
       ./modules/zsh.nix
