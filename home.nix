@@ -4,6 +4,7 @@
   imports = [
     ./modules/home-manager.nix
     ./modules/direnv.nix
+    ./modules/emacs.nix
     ./modules/git.nix
     ./modules/tmux.nix
     ./modules/zsh.nix
