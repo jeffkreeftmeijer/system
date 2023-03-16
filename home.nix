@@ -4,6 +4,7 @@
   imports = [
     ./modules/home-manager.nix
     ./modules/git.nix
+    ./modules/tmux.nix
   ];
 
   home = {

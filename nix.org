@@ -383,6 +383,58 @@ index 6f6f86d..09e001a 100644
 #+caption: =~/.config/git/config=
 #+include: ~/.config/git/config src git
 
+** tmux
+
+#+headers: :exports both
+#+begin_src shell
+  tmux -V
+#+end_src
+
+#+RESULTS:
+: tmux 3.3a
+
+*** Settings
+
+- Install an updated version of ncurses to [[id:B478D484-A76C-4271-87B7-3CD158DFFB71][fix issues with =tmux-256color= terminals]]
+
+  #+name: tmux-packages
+  #+begin_src nix
+    home.packages = [ pkgs.ncurses ];
+  #+end_src
+
+- Remove tmux-sensible from [[id:962506BA-E734-4609-8E81-93ACBBFCF964][Nix tmux defaults]]:
+
+  #+headers: :noweb-ref tmux-settings
+  #+begin_src nix
+    programs.tmux.sensibleOnTop = false;
+  #+end_src
+
+- [[id:F799F3F1-0AC3-4342-A3AB-51543BEC566B][Set =escape-time= to 0]]:
+
+  #+headers: :noweb-ref tmux-settings
+  #+begin_src nix
+    programs.tmux.escapeTime = 0;
+  #+end_src
+
+*** Nix configuration
+
+#+caption: =~/.config/nixpkgs/modules/tmux.nix=
+#+headers: :tangle modules/tmux.nix
+#+headers: :noweb yes
+#+begin_src nix
+  { pkgs, ... }:
+  {
+    <<tmux-packages>>
+    programs.tmux.enable = true;
+    <<tmux-settings>>
+  }
+#+end_src
+
+*** Generated configuration file
+
+#+caption: =~/.config/tmux/tmux.conf=
+#+include: ~/.config/tmux/tmux.conf src tmux
+
 * Summary
 
 Finally, the =home.nix= main configuration file imports all modules:
@@ -397,6 +449,7 @@ Finally, the =home.nix= main configuration file imports all modules:
     imports = [
       ./modules/home-manager.nix
       ./modules/git.nix
+      ./modules/tmux.nix
     ];
 
     home = {
