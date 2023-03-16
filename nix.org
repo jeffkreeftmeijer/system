@@ -350,20 +350,20 @@ index 6f6f86d..09e001a 100644
 **** Set the user name and email fields
 
 #+begin_src nix
-  userName = "Jeff Kreeftmeijer";
-  userEmail = "jeffkreeftmeijer@gmail.com";
+  programs.git.userName = "Jeff Kreeftmeijer";
+  programs.git.userEmail = "jeffkreeftmeijer@gmail.com";
 #+end_src
 
 **** Use "main" as the default branch
 
 #+begin_src nix
-  extraConfig.init.defaultBranch = "main";
+  programs.git.extraConfig.init.defaultBranch = "main";
 #+end_src
 
 **** Ignore ~.DS_Store~ files
 
 #+begin_src nix
-  ignores = ["DS_Store"];
+  programs.git.ignores = ["DS_Store"];
 #+end_src
 
 *** Nix configuration
@@ -373,10 +373,8 @@ index 6f6f86d..09e001a 100644
 #+headers: :noweb yes
 #+begin_src nix
   {
-    programs.git = {
-      enable = true;
-      <<git-settings>>
-    };
+    programs.git.enable = true;
+    <<git-settings>>
   }
 #+end_src
 
