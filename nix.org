@@ -453,29 +453,30 @@ index 6f6f86d..09e001a 100644
 **** [[id:340AEBBE-52C4-4157-B2D4-608484F3BD71][Disable command completion]]
 
 #+begin_src nix
-  enableCompletion = false;
+  programs.zsh.enableCompletion = false;
 #+end_src
 
 **** Enable [[https://github.com/zsh-users/zsh-history-substring-search][zsh-history-substring-search]]
 
 #+begin_src nix
-  historySubstringSearch.enable = true;
+  programs.zsh.historySubstringSearch.enable = true;
 #+end_src
 
 **** [[id:5B2982FB-35B2-41A6-8824-11E41A8AD5C2][Add current git repository status to shell prompt]]
 
 #+begin_src nix
-    initExtra =
-    ''
-    source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
-    setopt PROMPT_SUBST
-    export PS1='%~ $(__git_ps1 "(%s) ")%# '
-    '';
+  programs.zsh.initExtra =
+  ''
+  source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
+  setopt PROMPT_SUBST
+  export PS1='%~ $(__git_ps1 "(%s) ")%# '
+  '';
 #+end_src
 
 Since this depends on git, we'll also add git to this module's =home.packages= list:
 
 #+name: zsh-packages
+#+headers: :noweb-ref no
 #+begin_src nix
   home.packages = [ pkgs.git ];
 #+end_src
@@ -490,11 +491,8 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 
   {
     <<zsh-packages>>
-
-    programs.zsh = {
-      enable = true;
-      <<zsh-settings>>
-    };
+    programs.zsh.enable = true;
+    <<zsh-settings>>
   }
 #+end_src
 
