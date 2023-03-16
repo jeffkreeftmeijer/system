@@ -1,10 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [ pkgs.ncurses ];
-
-  programs.tmux = {
-    enable = true;
-    sensibleOnTop = false;
-    escapeTime = 0;
-  };
+  programs.tmux.enable = true;
+  programs.tmux.sensibleOnTop = false;
+  programs.tmux.escapeTime = 0;
 }
