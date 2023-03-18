@@ -123,7 +123,17 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 #+RESULTS[de1f90d1ff70c1f24cfcedec11dea87386110765]:
 
 #+caption: =~/.config/nix/nix.conf=
-#+include: ~/.config/nix/nix.conf src nix
+#+headers: :cache yes
+#+headers: :results both
+#+headers: :wrap src nix
+#+begin_src shell
+cat ~/.config/nix/nix.conf
+#+end_src
+
+#+RESULTS[f645632c4b7bc726c789822830a6acb7ba1f6cc2]:
+#+begin_src nix
+experimental-features = nix-command flakes
+#+end_src
 
 * Home Manager
 
@@ -381,7 +391,23 @@ index 6f6f86d..09e001a 100644
 *** Generated configuration file
 
 #+caption: =~/.config/git/config=
-#+include: ~/.config/git/config src git
+#+headers: :cache yes
+#+headers: :results code
+#+headers: :exports both
+#+headers: :wrap src nix
+#+begin_src shell
+cat ~/.config/git/config
+#+end_src
+
+#+RESULTS[300671012dbdd73095845089c5ed92f764cbb04e]:
+#+begin_src nix
+[init]
+	defaultBranch = "main"
+
+[user]
+	email = "jeffkreeftmeijer@gmail.com"
+	name = "Jeff Kreeftmeijer"
+#+end_src
 
 ** tmux
 
@@ -440,7 +466,41 @@ index 6f6f86d..09e001a 100644
 *** Generated configuration file
 
 #+caption: =~/.config/tmux/tmux.conf=
-#+include: ~/.config/tmux/tmux.conf src tmux
+#+headers: :cache yes
+#+headers: :results code
+#+headers: :outputs both
+#+headers: :wrap src tmux
+#+begin_src shell
+cat ~/.config/tmux/tmux.conf
+#+end_src
+
+#+RESULTS[f6d36e6fcc4f72c93085da0024f1c9ea96584e69]:
+#+begin_src tmux
+
+set  -g default-terminal "screen"
+set  -g base-index      0
+setw -g pane-base-index 0
+
+
+
+
+
+set -g status-keys vi
+set -g mode-keys   vi
+
+
+
+
+
+
+
+set  -g mouse             off
+setw -g aggressive-resize off
+setw -g clock-mode-style  12
+set  -s escape-time       0
+set  -g history-limit     2000
+
+#+end_src
 
 ** zsh
 
@@ -505,7 +565,74 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 *** Generated configuration file
 
 #+caption: =~/.zshrc=
-#+include: ~/.zshrc src zsh
+#+headers: :cache yes
+#+headers: :results code
+#+headers: :exports both
+#+headers: :wrap src zsh
+#+begin_src shell
+cat ~/.zshrc
+#+end_src
+
+#+RESULTS[9d9e09648b6ff20f8abc0106e12a359cf3821f0a]:
+#+begin_src zsh
+
+typeset -U path cdpath fpath manpath
+
+for profile in ${(z)NIX_PROFILES}; do
+  fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
+done
+
+HELPDIR="/nix/store/xkr4dr8zhi1r1k4x0w17hhprj62cjxw2-zsh-5.9/share/zsh/$ZSH_VERSION/help"
+
+
+
+
+
+# Oh-My-Zsh/Prezto calls compinit during initialization,
+# calling it twice causes slight start up slowdown
+# as all $fpath entries will be traversed again.
+
+
+
+
+
+
+
+
+
+
+# History options should be set in .zshrc and after oh-my-zsh sourcing.
+# See https://github.com/nix-community/home-manager/issues/177.
+HISTSIZE="10000"
+SAVEHIST="10000"
+
+HISTFILE="$HOME/.zsh_history"
+mkdir -p "$(dirname "$HISTFILE")"
+
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+unsetopt HIST_EXPIRE_DUPS_FIRST
+setopt SHARE_HISTORY
+unsetopt EXTENDED_HISTORY
+
+
+source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
+setopt PROMPT_SUBST
+export PS1='%~ $(__git_ps1 "(%s) ")%# '
+
+
+# Aliases
+
+
+# Named Directory Hashes
+
+
+
+source /nix/store/672nxqqhcr4d57sa1qa3n181m1nwjxw5-zsh-history-substring-search-1.0.2/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+#+end_src
 
 * Summary
 
