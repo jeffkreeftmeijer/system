@@ -361,7 +361,7 @@ index 6f6f86d..09e001a 100644
 
 #+begin_src nix
   programs.git.userName = "Jeff Kreeftmeijer";
-  programs.git.userEmail = "jeffkreeftmeijer@gmail.com";
+  programs.git.userEmail = "jeff@kreeft.me";
 #+end_src
 
 **** Use "main" as the default branch
