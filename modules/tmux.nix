@@ -4,4 +4,5 @@
   programs.tmux.enable = true;
   programs.tmux.sensibleOnTop = false;
   programs.tmux.escapeTime = 0;
+  programs.tmux.keyMode = "vi";
 }
