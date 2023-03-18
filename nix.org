@@ -454,7 +454,7 @@ Then, add the Emacs module, which enables the program and switches the package t
   { pkgs, ... }:
   {
     programs.emacs.enable = true;
-    programs.emacs.package = pkgs.emacsGit-nox;
+    programs.emacs.package = pkgs.emacsGit;
   }
 #+end_src
 
