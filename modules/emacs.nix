@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
-  programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacsGit;
+  home.packages = [(pkgs.emacsWithPackagesFromUsePackage {
+    config = ../emacs/default.el;
+    defaultInitFile = true;
+    package = pkgs.emacsGit;
+    alwaysEnsure = true;
+  })];
 }
