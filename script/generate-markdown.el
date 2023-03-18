@@ -12,12 +12,18 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'ox-gfm)
-(require 'ox-publish)
+(straight-use-package
+ '(ox-extend :type git :host github :repo "jeffkreeftmeijer/ox-extend.el"))
+(straight-use-package
+ '(ox-md-title :type git :host github :repo "jeffkreeftmeijer/ox-md-title.el"))
+
+(require 'ox-md-title)
 
 (defun publish ()
   (org-publish-file "nix.org"
 		    '("readme"
 		      :base-directory "."
 		      :publishing-directory "."
-		      :publishing-function org-gfm-publish-to-gfm)))
+		      :publishing-function org-gfm-publish-to-gfm
+		      :extensions ('ox-md-title))))
 
