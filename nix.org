@@ -416,6 +416,13 @@ index 6f6f86d..09e001a 100644
     programs.tmux.escapeTime = 0;
   #+end_src
 
+- Use vi-style key bindings:
+
+  #+headers: :noweb-ref tmux-settings
+  #+begin_src nix
+    programs.tmux.keyMode = "vi";
+  #+end_src
+
 *** Nix configuration
 
 #+caption: =~/.config/nixpkgs/modules/tmux.nix=
