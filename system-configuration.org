@@ -216,6 +216,17 @@ Then, add the Emacs module, which enables the program and switches the package t
   }
 #+end_src
 
+** elixir-ls
+
+#+caption: =~/.config/nixpkgs/modules/elixir-ls.nix=
+#+headers: :tangle modules/elixir-ls.nix
+#+headers: :noweb yes
+#+begin_src nix
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.elixir_ls ];
+}
+#+end_src
 ** git
 
 #+headers: :cache yes
@@ -533,6 +544,7 @@ Finally, the =home.nix= main configuration file imports all modules:
     imports = [
       ./modules/home-manager.nix
       ./modules/direnv.nix
+      ./modules/elixir-ls.nix
       ./modules/emacs.nix
       ./modules/git.nix
       ./modules/tmux.nix
