@@ -369,6 +369,8 @@ This module enables zsh for that purpose:
 
 ** emacs
 
+Emacs, built from source from the master branch:
+
 #+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
@@ -383,7 +385,14 @@ This module enables zsh for that purpose:
 #+RESULTS[d0a28aa425cae94a5b9f635388232d20669dc8f9]:
 : GNU Emacs 30.0.50 (master @ dec09aaeb616e7648f4694d76090cc8e269471e0)
 
-Install Emacs from its master branch, with the following configuration options:
+My current version was built with the following options:[fn:prefix]
+
+[fn:prefix]In reality, Nix also sets a =--prefix= because it installs Emacs in a custom location, like =/nix/store/x6nsbfr31nphxzn2f9c8iyc66rxvmi7d-emacs-git-20230321.0=.
+I consider that a Nix artifact, and not an Emacs configuration setting.
+
+Another option I did include above is =--disable-build-details=, which is also set by Nix [[https://github.com/NixOS/nixpkgs/commit/496f9309480b22173e25885bc7c128c30fbd4da3][for a more reproducable build]].
+In practice, that means the host names and build times are omitted from the built program to keep its hash stable for Nix's cache.
+
 
 #+headers: :cache yes
 #+headers: :eval yes
