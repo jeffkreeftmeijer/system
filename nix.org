@@ -17,13 +17,14 @@ Follow the [[https://nixos.org/download.html#nix-install-macos][install instruct
   sh <(curl -L https://nixos.org/nix/install)
 #+end_src
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   nix --version
 #+end_src
 
-#+RESULTS[aee53fea06d27ba12af92e6a4854ff89c5117281]:
+#+RESULTS[140e58f84c79ece285687dd1361d33612cd6a84f]:
 : nix (Nix) 2.13.3
 
 ** Run a program with Nix
@@ -119,6 +120,7 @@ mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 #+end_src
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :results code
 #+headers: :exports results
@@ -128,7 +130,7 @@ cat ~/.config/nix/nix.conf
 #+end_src
 
 #+caption: =~/.config/nix/nix.conf=
-#+RESULTS:
+#+RESULTS[8b18fede23ad0d5809a2900ec9efd45bc27933c0]:
 #+begin_src nix
 experimental-features = nix-command flakes
 #+end_src
@@ -342,13 +344,14 @@ index 6f6f86d..09e001a 100644
 
 [[https://direnv.net][Direnv]] loads and unloads packages based on the curent directory to create per-project development environments.
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   direnv --version
 #+end_src
 
-#+RESULTS:
+#+RESULTS[76c6f95454c8be913fe23f78d4d384d057d77744]:
 : 2.32.2
 
 *** Nix configuration
@@ -367,6 +370,7 @@ This module enables zsh for that purpose:
 
 ** emacs
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
 #+headers: :results scalar
@@ -374,7 +378,7 @@ This module enables zsh for that purpose:
   emacs --version | head -n1
 #+end_src
 
-#+RESULTS:
+#+RESULTS[cdc9c33f2eb37a2ef38440c5cd6f13b579515394]:
 : GNU Emacs 30.0.50
 
 *** Nix configuration
@@ -456,13 +460,14 @@ Then, add the Emacs module, which enables the program and switches the package t
 
 ** git
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   git --version
 #+end_src
 
-#+RESULTS:
+#+RESULTS[ea1662b458130df3688c79b48d34eb0215cc65b0]:
 : git version 2.39.2
 
 *** Settings
@@ -503,6 +508,7 @@ Then, add the Emacs module, which enables the program and switches the package t
 
 *** Generated configuration file
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :results code
 #+headers: :exports results
@@ -512,7 +518,7 @@ cat ~/.config/git/config
 #+end_src
 
 #+caption: =~/.config/git/config=
-#+RESULTS:
+#+RESULTS[0b540e2fe346e6609744e853d1c5340b7141144c]:
 #+begin_src gitconfig
 [init]
 	defaultBranch = "main"
@@ -524,13 +530,14 @@ cat ~/.config/git/config
 
 ** tmux
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   tmux -V
 #+end_src
 
-#+RESULTS:
+#+RESULTS[d890824c56ae02ca54fbf0eb2e021e0279769f76]:
 : tmux 3.3a
 
 *** Settings
@@ -580,6 +587,7 @@ cat ~/.config/git/config
 *** Generated configuration file
 
 #+caption: =~/.config/tmux/tmux.conf=
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :outputs results
 #+headers: :results code
@@ -588,7 +596,7 @@ cat ~/.config/git/config
 cat ~/.config/tmux/tmux.conf
 #+end_src
 
-#+RESULTS[f6d36e6fcc4f72c93085da0024f1c9ea96584e69]:
+#+RESULTS[e734fbbaa242f8594633df84a086dd82a36a83d5]:
 #+begin_src tmux
 
 set  -g default-terminal "screen"
@@ -618,13 +626,14 @@ set  -g history-limit     2000
 
 ** zsh
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   zsh --version
 #+end_src
 
-#+RESULTS:
+#+RESULTS[e99f22e09a686ab11189774093997dc75be3d5a7]:
 : zsh 5.9 (x86_64-apple-darwin22.3.0)
 
 *** Settings
@@ -679,6 +688,7 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 
 *** Generated configuration file
 
+#+headers: :cache yes
 #+headers: :eval yes
 #+headers: :results code
 #+headers: :exports results
@@ -688,7 +698,7 @@ cat ~/.zshrc
 #+end_src
 
 #+caption: =~/.zshrc=
-#+RESULTS[9d9e09648b6ff20f8abc0106e12a359cf3821f0a]:
+#+RESULTS[6e82086d38f04ae941fd3a1aa8a2322930460e06]:
 #+begin_src zsh
 
 typeset -U path cdpath fpath manpath
