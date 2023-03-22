@@ -114,25 +114,21 @@ They're enabled using the =--extra-experimental-features= flag:
 
 To enable these features globally, set =experimental-featurs= in =nix.conf=:
 
-#+headers: :exports both
-#+headers: :cache yes
-#+headers: :results scalar
 #+begin_src shell
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 #+end_src
 
-#+RESULTS[de1f90d1ff70c1f24cfcedec11dea87386110765]:
-
-#+caption: =~/.config/nix/nix.conf=
-#+headers: :cache yes
-#+headers: :results both
+#+headers: :eval yes
+#+headers: :results code
+#+headers: :exports results
 #+headers: :wrap src nix
 #+begin_src shell
 cat ~/.config/nix/nix.conf
 #+end_src
 
-#+RESULTS[f645632c4b7bc726c789822830a6acb7ba1f6cc2]:
+#+caption: =~/.config/nix/nix.conf=
+#+RESULTS:
 #+begin_src nix
 experimental-features = nix-command flakes
 #+end_src
@@ -148,18 +144,17 @@ Set up a flake with the Home Manager template by running =flake new=:
   nix flake new ~/.config/nixpkgs -t github:nix-community/home-manager
 #+end_src
 
-#+RESULTS:
-
 #+caption: =~/.config/nixpkgs/flake.nix=
-#+headers: :exports none
 #+headers: :cache yes
+#+headers: :exorts results
 #+headers: :results scalar
+#+headers: :wrap src nix
 #+begin_src shell
 cat ~/.config/nixpkgs/flake.nix
 #+end_src
 
 #+RESULTS[fe747e4c90aed55a57a2f6a465840189a6e6d475]:
-#+begin_example
+#+begin_src nix
 {
   description = "Home Manager configuration of Jane Doe";
 
@@ -189,7 +184,7 @@ cat ~/.config/nixpkgs/flake.nix
       };
     };
 }
-#+end_example
+#+end_src
 
 Then, update the output system and username and remove the boilerplate:
 
@@ -508,22 +503,22 @@ Then, add the Emacs module, which enables the program and switches the package t
 
 *** Generated configuration file
 
-#+caption: =~/.config/git/config=
-#+headers: :cache yes
+#+headers: :eval yes
 #+headers: :results code
-#+headers: :exports both
-#+headers: :wrap src nix
+#+headers: :exports results
+#+headers: :wrap src gitconfig
 #+begin_src shell
 cat ~/.config/git/config
 #+end_src
 
-#+RESULTS[300671012dbdd73095845089c5ed92f764cbb04e]:
-#+begin_src nix
+#+caption: =~/.config/git/config=
+#+RESULTS:
+#+begin_src gitconfig
 [init]
 	defaultBranch = "main"
 
 [user]
-	email = "jeffkreeftmeijer@gmail.com"
+	email = "jeff@kreeft.me"
 	name = "Jeff Kreeftmeijer"
 #+end_src
 
@@ -585,9 +580,9 @@ cat ~/.config/git/config
 *** Generated configuration file
 
 #+caption: =~/.config/tmux/tmux.conf=
-#+headers: :cache yes
+#+headers: :eval yes
+#+headers: :outputs results
 #+headers: :results code
-#+headers: :outputs both
 #+headers: :wrap src tmux
 #+begin_src shell
 cat ~/.config/tmux/tmux.conf
@@ -684,15 +679,15 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 
 *** Generated configuration file
 
-#+caption: =~/.zshrc=
-#+headers: :cache yes
+#+headers: :eval yes
 #+headers: :results code
-#+headers: :exports both
+#+headers: :exports results
 #+headers: :wrap src zsh
 #+begin_src shell
 cat ~/.zshrc
 #+end_src
 
+#+caption: =~/.zshrc=
 #+RESULTS[9d9e09648b6ff20f8abc0106e12a359cf3821f0a]:
 #+begin_src zsh
 
@@ -702,7 +697,7 @@ for profile in ${(z)NIX_PROFILES}; do
   fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
 done
 
-HELPDIR="/nix/store/xkr4dr8zhi1r1k4x0w17hhprj62cjxw2-zsh-5.9/share/zsh/$ZSH_VERSION/help"
+HELPDIR="/nix/store/prgvdaam2gnp7is5mraq25rhrrj76rw0-zsh-5.9/share/zsh/$ZSH_VERSION/help"
 
 
 
@@ -741,6 +736,8 @@ source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
 setopt PROMPT_SUBST
 export PS1='%~ $(__git_ps1 "(%s) ")%# '
 
+eval "$(/nix/store/l372b7br02g12dp5lxys8s4zw629g3cq-direnv-2.32.2/bin/direnv hook zsh)"
+
 
 # Aliases
 
@@ -749,7 +746,7 @@ export PS1='%~ $(__git_ps1 "(%s) ")%# '
 
 
 
-source /nix/store/672nxqqhcr4d57sa1qa3n181m1nwjxw5-zsh-history-substring-search-1.0.2/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /nix/store/rbphvmksmhq97431yfsc710xmmi9qsan-zsh-history-substring-search-1.0.2/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 #+end_src
