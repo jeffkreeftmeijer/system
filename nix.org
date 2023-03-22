@@ -372,13 +372,16 @@ This module enables zsh for that purpose:
 #+headers: :cache yes
 #+headers: :eval yes
 #+headers: :exports both
-#+headers: :results scalar
-#+begin_src shell
-  emacs --version | head -n1
+#+headers: :results text
+#+begin_src emacs-lisp
+  (concat
+   "GNU Emacs "
+   emacs-version
+   " (" emacs-repository-branch " @ " emacs-repository-version ")")
 #+end_src
 
-#+RESULTS[cdc9c33f2eb37a2ef38440c5cd6f13b579515394]:
-: GNU Emacs 30.0.50
+#+RESULTS[d0a28aa425cae94a5b9f635388232d20669dc8f9]:
+: GNU Emacs 30.0.50 (master @ dec09aaeb616e7648f4694d76090cc8e269471e0)
 
 Install Emacs from its master branch, with the following configuration options:
 
