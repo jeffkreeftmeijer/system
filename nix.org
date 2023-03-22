@@ -72,8 +72,7 @@ Although some fish files are found in the Nix store, fish isn't isnstalled on th
 ** Extra experimental features
 
 The =nix run= command relies on the =nix-command= and =flakes= features. 
-As of src_shell{nix --version | cut -d' ' -f3}, both of these are experimental and disabled by default:
-They're enabled using the =--extra-experimental-features= flag:
+Both of these are experimental and disabled by default, but they're enabled using the =--extra-experimental-features= flag:
 
 #+headers: :exports both
 #+headers: :cache yes
