@@ -1,6 +1,7 @@
 :PROPERTIES:
 :ID:       33B0C1A7-3CCE-46A3-90FE-71AE25517A15
 :ROAM_ALIASES: nix-config
+:header-args: :eval no
 :END:
 #+title: Nix configuration
 #+author: Jeff Kreeftmeijer
@@ -371,7 +372,6 @@ This module enables zsh for that purpose:
 
 #+headers: :exports both
 #+headers: :results scalar
-#+headers: :eval foo
 #+begin_src shell
   emacs --version | head -n1
 #+end_src
@@ -468,7 +468,7 @@ Then, add the Emacs module, which enables the program and switches the package t
 
 *** Settings
 :PROPERTIES:
-:header-args: :noweb-ref git-settings
+:header-args: :noweb-ref git-settings :eval no
 :END:
 
 **** Set the user name and email fields
@@ -628,7 +628,7 @@ set  -g history-limit     2000
 
 *** Settings
 :PROPERTIES:
-:header-args: :noweb-ref zsh-settings
+:header-args: :noweb-ref zsh-settings :eval no
 :END:
 
 **** [[https://jeffkreeftmeijer.com/nix-home-manager-zsh-defaults/][Disable command completion]]
