@@ -17,6 +17,7 @@ Follow the [[https://nixos.org/download.html#nix-install-macos][install instruct
   sh <(curl -L https://nixos.org/nix/install)
 #+end_src
 
+#+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   nix --version
@@ -346,6 +347,7 @@ index 6f6f86d..09e001a 100644
 
 [[https://direnv.net][Direnv]] loads and unloads packages based on the curent directory to create per-project development environments.
 
+#+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   direnv --version
@@ -370,6 +372,7 @@ This module enables zsh for that purpose:
 
 ** emacs
 
+#+headers: :eval yes
 #+headers: :exports both
 #+headers: :results scalar
 #+begin_src shell
@@ -458,6 +461,7 @@ Then, add the Emacs module, which enables the program and switches the package t
 
 ** git
 
+#+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   git --version
@@ -525,6 +529,7 @@ cat ~/.config/git/config
 
 ** tmux
 
+#+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   tmux -V
@@ -618,6 +623,7 @@ set  -g history-limit     2000
 
 ** zsh
 
+#+headers: :eval yes
 #+headers: :exports both
 #+begin_src shell
   zsh --version
