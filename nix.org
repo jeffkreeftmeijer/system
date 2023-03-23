@@ -413,6 +413,18 @@ In practice, that means the host names and build times are omitted from the buil
 --with-native-compilation
 #+end_src
 
+This produces a build with the following features enabled:
+
+#+headers: :cache yes
+#+headers: :eval yes
+#+headers: :exports results
+#+begin_src emacs-lisp
+system-configuration-features
+#+end_src
+
+#+RESULTS[35cf9621cff446642956b65406a2f88c92d2d0c5]:
+: ACL GLIB GMP GNUTLS JPEG JSON LIBXML2 MODULES NATIVE_COMP NOTIFY KQUEUE NS PDUMPER PNG RSVG SQLITE3 THREADS TIFF TOOLKIT_SCROLL_BARS TREE_SITTER WEBP ZLIB
+
 *** Nix configuration
 
 Use [[https://github.com/nix-community/emacs-overlay][emacs-overlay]] to install Emacs from source, based on the latest version on the master branch.
