@@ -1,0 +1,266 @@
+:PROPERTIES:
+:ID:       33B0C1A7-3CCE-46A3-90FE-71AE25517A15
+:ROAM_ALIASES: nix-home-manager
+:header-args: :eval no
+:END:
+#+title: Manage user environments with Nix and Home Manager
+#+author: Jeff Kreeftmeijer
+#+date: 2023-03-25
+
+[[https://nixos.org][Nix]] is a functional package manager for Linux and macOS which helps build reproducable setups.
+
+Instead of installing packages globally, it stores each package in the /Nix Store/.
+In there, each package is placed in a directory named with a cryptographic hash of the package and all of its dependencies.
+This hash changes whenever a package is updated, so packages are never overwritten.
+
+For example, installing the fish shell through Nix adds fish the the load path from Nix's store directory:
+
+#+headers: :exports results
+#+begin_src shell
+which fish
+#+end_src
+
+#+headers: :exports results
+#+headers: :cache yes
+#+headers: :results scalar
+#+begin_src shell
+nix shell nixpkgs#fish --command which fish
+#+end_src
+
+#+RESULTS[d814f917907d3a8be22e02e10d5b19baa5c9fcef]:
+: /nix/store/dg6z33cy6jqqmclyg8wxx91lkc324lsj-fish-3.6.0/bin/fish
+
+The packages are symlinked to by updating the shell's load path, which allows for running shells with different versions of a program, or even spinning up a shell with a previously uninstalled program available.
+
+After following the [[https://nixos.org/download.html][install instructions]], use the =nix run= command to run a program with Nix.
+For example, to try the fish shell:[fn:extra-experimental]
+
+#+begin_src shell
+  nix run nixpkgs#fish\
+      --extra-experimental-features nix-command \
+      --extra-experimental-features flakes
+#+end_src
+
+This fetches the fish package from the [[https://github.com/NixOS/nixpkgs][nixpkgs package registry]], downloads it to the Nix Store and starts it:
+
+#+begin_src example
+Welcome to fish, the friendly interactive shell
+Type help for instructions on how to use fish
+~>
+#+end_src
+
+After closing the shell, fish is no longer in the load path:
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+headers: :prologue exec 2>&1
+#+headers: :epilogue ":"
+#+begin_src shell
+  which fish
+#+end_src
+
+#+RESULTS[01feaaf4eb76f1144d4ca3f56c1333e553dd9064]:
+: fish not found
+
+[fn:extra-experimental] The =nix run= command relies on the =nix-command= and =flakes= features. 
+Both of these are currently experimental and disabled by default, but they're enabled using the =--extra-experimental-features= flag.
+To enable these features globally, set =experimental-featurs= in =nix.conf=:
+
+#+begin_src shell
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+#+end_src
+
+#+headers: :cache yes
+#+headers: :eval yes
+#+headers: :results code
+#+headers: :exports results
+#+headers: :wrap src nix
+#+begin_src shell
+cat ~/.config/nix/nix.conf
+#+end_src
+
+#+caption: =~/.config/nix/nix.conf=
+#+RESULTS[8b18fede23ad0d5809a2900ec9efd45bc27933c0]:
+#+begin_src nix
+experimental-features = nix-command flakes
+#+end_src
+
+
+* System configuration with Home Manager
+
+[[https://github.com/nix-community/home-manager][Home Manager]] is a system for configuring user environments, built on Nix.
+
+Set up a flake with the Home Manager template by running =flake new=:
+
+#+headers: :eval yes
+#+headers: :prologue rm ~/.config/home-manager/flake.nix
+#+begin_src shell
+  nix flake new ~/.config/nixpkgs -t github:nix-community/home-manager
+#+end_src
+
+#+RESULTS:
+
+#+caption: =~/.config/home-manager/flake.nix=
+#+headers: :cache yes
+#+headers: :exorts results
+#+headers: :results scalar
+#+headers: :wrap src nix
+#+begin_src shell
+cat ~/.config/home-manager/flake.nix
+#+end_src
+
+#+RESULTS[fe747e4c90aed55a57a2f6a465840189a6e6d475]:
+#+begin_src nix
+{
+  description = "Home Manager configuration of Jane Doe";
+
+  inputs = {
+    # Specify the source of Home Manager and Nixpkgs.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      homeConfigurations.jdoe = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [ ./home.nix ];
+
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
+    };
+}
+#+end_src
+
+Then, update the output system and username and remove the boilerplate:
+
+#+caption: =~/.config/home-manager/flake.nix=
+#+begin_src nix
+  {
+    description = "Home Manager configuration";
+
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    outputs = { nixpkgs, home-manager, ... }:
+      let
+        system = "x86_64-darwin";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home.nix
+          ];
+        };
+      };
+  }
+#+end_src
+
+For Home Manager's configuration, create =home.nix=.
+It lists your use name and home directory, but also the =stateVersion=, which determines the Home Manager release the configuration is compatible with.
+The =home.nix= file also sets up Home Manager to install and manage itself:
+
+#+caption: =~/.config/home-manager/home.nix=
+#+begin_src nix
+  { config, pkgs, ... }:
+
+  {
+    home = {
+      username = "jeffkreeftmeijer";
+      homeDirectory = "/Users/jeffkreeftmeijer";
+      stateVersion = "22.11";
+    };
+
+    programs.home-manager = {
+      enable = true;
+    };
+  }
+#+end_src
+
+Finally, install Home Manager and apply the configuration:
+
+#+begin_src shell
+  nix run ~/.config/nixpkgs#homeConfigurations.jeffkreeftmeijer.activationPackage
+#+end_src
+
+Running the =activationPackage= generates a =flake.lock= file, which locks all packages to their currently installed versions for reproducability.
+It only lists Home Manager now, but installed packages will be added to the list when they're added.
+
+* Installing packages
+
+To install a package, add it to =home.packages= in =home.nix=:
+
+#+begin_src diff
+diff --git a/home.nix b/home.nix
+index 6f6f86d..12f9efe 100644
+--- a/home.nix
++++ b/home.nix
+@@ -5,6 +5,7 @@
+     username = "jeffkreeftmeijer";
+     homeDirectory = "/Users/jeffkreeftmeijer";
+     stateVersion = "22.11";
++    packages = [ pkgs.git ];
+   };
+ 
+   programs.home-manager = {
+#+end_src
+
+Then, update the environment by running =home-manager switch=:
+
+#+headers: :exports both
+#+headers: :cache yes
+#+headers: :results scalar
+#+begin_src shell
+  home-manager switch
+#+end_src
+
+#+RESULTS[a54bed91c273e3fba16b5667709e2e4fb742fbe2]:
+#+begin_example
+Starting Home Manager activation
+Activating checkFilesChanged
+Activating checkLaunchAgents
+Activating checkLinkTargets
+Activating writeBoundary
+Activating copyFonts
+Activating installPackages
+replacing old 'home-manager-path'
+installing 'home-manager-path'
+Activating linkGeneration
+Cleaning up orphan links from /Users/jeffkreeftmeijer
+Creating profile generation 2
+Creating home file links in /Users/jeffkreeftmeijer
+Activating onFilesChange
+Activating setupLaunchAgents
+#+end_example
+
+After switching, the newly-installed package is available and symlinked to in the =~/.nix-profile= directory:
+
+#+headers: :exports both
+#+headers: :eval yes
+#+headers: :cache yes
+#+headers: :results scalar
+#+begin_src shell
+which git
+#+end_src
+
+#+RESULTS[1487b079d44a78d878f0b5f30fd04c12fb1972ea]:
+: /Users/jeffkreeftmeijer/.nix-profile/bin/git
