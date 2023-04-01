@@ -1,9 +1,31 @@
 {
   "nodes": {
+    "configured-emacs": {
+      "inputs": {
+        "emacs-overlay": "emacs-overlay",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1680335580,
+        "narHash": "sha256-UGT9nZxhy2ht8A5s83s+Zj1BWgtaiElEe1FPnG2xFzQ=",
+        "owner": "jeffkreeftmeijer",
+        "repo": ".emacs.d",
+        "rev": "6c431610309e14d6becf7ab01f13b961904e2cfe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jeffkreeftmeijer",
+        "repo": ".emacs.d",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
+          "configured-emacs",
           "nixpkgs"
         ]
       },
@@ -75,7 +97,7 @@
     },
     "root": {
       "inputs": {
-        "emacs-overlay": "emacs-overlay",
+        "configured-emacs": "configured-emacs",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

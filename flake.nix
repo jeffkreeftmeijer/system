@@ -7,16 +7,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
+    configured-emacs = {
+      url = "github:jeffkreeftmeijer/.emacs.d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, emacs-overlay, ... }:
+  outputs = { nixpkgs, home-manager, configured-emacs, ... }:
     let
       system = "x86_64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system}.extend(emacs-overlay.overlay);
+      pkgs = nixpkgs.legacyPackages.${system}.extend(configured-emacs.overlay);
     in {
       homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
