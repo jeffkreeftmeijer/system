@@ -68,6 +68,9 @@ index 6f6f86d..09e001a 100644
 : 2.32.2
 
 *** Nix configuration
+:PROPERTIES:
+:CUSTOM_ID: direnv-nix-configuratuon
+:END:
 
 The direnv program depends on a shell being enabled for it to hook in.
 This module enables zsh for that purpose:
@@ -140,6 +143,9 @@ system-configuration-features
 : ACL GLIB GMP GNUTLS JPEG JSON LIBXML2 MODULES NATIVE_COMP NOTIFY KQUEUE NS PDUMPER PNG RSVG SQLITE3 THREADS TIFF TOOLKIT_SCROLL_BARS TREE_SITTER WEBP ZLIB
 
 *** Nix configuration
+:PROPERTIES:
+:CUSTOM_ID: emacs-nix-configuratuon
+:END:
 
 Use [[https://github.com/nix-community/emacs-overlay][emacs-overlay]] to install Emacs from source, based on the latest version on the master branch.
 To do this, add the overlay to the inputs in =flake.nix=:
@@ -230,7 +236,8 @@ Then, add the Emacs module, which enables the program and switches the package t
 
 *** Settings
 :PROPERTIES:
-:header-args: :noweb-ref git-settings :eval no
+:header-args: :noweb-ref git-nix-settings :eval no
+:CUSTOM_ID: git-settings
 :END:
 
 **** Set the user name and email fields
@@ -253,6 +260,9 @@ Then, add the Emacs module, which enables the program and switches the package t
 #+end_src
 
 *** Nix configuration
+:PROPERTIES:
+:CUSTOM_ID: git-nix-configuratuon
+:END:
 
 #+caption: =~/.config/nixpkgs/modules/git.nix=
 #+headers: :tangle modules/git.nix
@@ -260,11 +270,14 @@ Then, add the Emacs module, which enables the program and switches the package t
 #+begin_src nix
   {
     programs.git.enable = true;
-    <<git-settings>>
+    <<git-nix-settings>>
   }
 #+end_src
 
 *** Generated configuration file
+:PROPERTIES:
+:CUSTOM_ID: git-configuration-file
+:END:
 
 #+headers: :cache yes
 #+headers: :eval yes
@@ -299,6 +312,9 @@ cat ~/.config/git/config
 : tmux 3.3a
 
 *** Settings
+:PROPERTIES:
+:CUSTOM_ID: tmux-settings
+:END:
 
 - Install an updated version of ncurses to [[https://jeffkreeftmeijer.com/tmux-ncurses/][fix issues with =tmux-256color= terminals]].
 
@@ -309,26 +325,29 @@ cat ~/.config/git/config
 
 - Remove tmux-sensible from [[https://jeffkreeftmeijer.com/nix-home-manager-tmux-defaults/][Nix tmux defaults]]:
 
-  #+headers: :noweb-ref tmux-settings
+  #+headers: :noweb-ref tmux-nix-settings
   #+begin_src nix
     programs.tmux.sensibleOnTop = false;
   #+end_src
 
 - [[https://jeffkreeftmeijer.com/tmux-escape-time/][Set =escape-time= to 0]]:
 
-  #+headers: :noweb-ref tmux-settings
+  #+headers: :noweb-ref tmux-nix-settings
   #+begin_src nix
     programs.tmux.escapeTime = 0;
   #+end_src
 
 - Use vi-style key bindings:
 
-  #+headers: :noweb-ref tmux-settings
+  #+headers: :noweb-ref tmux-nix-settings
   #+begin_src nix
     programs.tmux.keyMode = "vi";
   #+end_src
 
 *** Nix configuration
+:PROPERTIES:
+:CUSTOM_ID: tmux-nix-configuratuon
+:END:
 
 #+caption: =~/.config/nixpkgs/modules/tmux.nix=
 #+headers: :tangle modules/tmux.nix
@@ -338,11 +357,14 @@ cat ~/.config/git/config
   {
     <<tmux-packages>>
     programs.tmux.enable = true;
-    <<tmux-settings>>
+    <<tmux-nix-settings>>
   }
 #+end_src
 
 *** Generated configuration file
+:PROPERTIES:
+:CUSTOM_ID: tmux-configuration-file
+:END:
 
 #+caption: =~/.config/tmux/tmux.conf=
 #+headers: :cache yes
@@ -397,6 +419,7 @@ set  -g history-limit     2000
 *** Settings
 :PROPERTIES:
 :header-args: :noweb-ref zsh-settings :eval no
+:CUSTOM_ID: zsh-settings
 :END:
 
 **** [[https://jeffkreeftmeijer.com/nix-home-manager-zsh-defaults/][Disable command completion]]
@@ -431,6 +454,9 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 #+end_src
 
 *** Nix configuration
+:PROPERTIES:
+:CUSTOM_ID: zsh-nix-configuratuon
+:END:
 
 #+caption: =~/.config/nixpkgs/modules/zsh.nix=
 #+headers: :tangle modules/zsh.nix
@@ -445,6 +471,9 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 #+end_src
 
 *** Generated configuration file
+:PROPERTIES:
+:CUSTOM_ID: zsh-configuration-file
+:END:
 
 #+headers: :cache yes
 #+headers: :eval yes
