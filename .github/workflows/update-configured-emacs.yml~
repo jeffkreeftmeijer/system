@@ -1,0 +1,11 @@
+name: Update configured-emacs
+
+on: [repository_dispatch]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Triggering Wokflow 2"
+        - name: Checkout
+          uses: actions/checkout@v2
