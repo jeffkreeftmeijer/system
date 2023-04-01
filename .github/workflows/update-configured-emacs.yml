@@ -1,0 +1,14 @@
+name: Update configured-emacs
+
+on: [workflow_dispatch, repository_dispatch]
+
+jobs:
+  update-configured-emacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v19
+      - run: nix flake lock --update-input configured-emacs
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update configured-emacs
