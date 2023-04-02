@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     configured-emacs = {
-      url = "github:jeffkreeftmeijer/.emacs.d";
+      url = "github:jeffkreeftmeijer/.emacs.d/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
