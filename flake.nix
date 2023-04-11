@@ -19,6 +19,7 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ configured-emacs.overlay ];
+        config.allowUnfree = true;
       };
     in {
       homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
