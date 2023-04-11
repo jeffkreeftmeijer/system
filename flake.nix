@@ -16,7 +16,10 @@
   outputs = { nixpkgs, home-manager, configured-emacs, ... }:
     let
       system = "x86_64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system}.extend(configured-emacs.overlay);
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ configured-emacs.overlay ];
+      };
     in {
       homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
