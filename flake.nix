@@ -20,7 +20,7 @@
     in {
       homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
+  
         modules = [
           ./home.nix
         ];

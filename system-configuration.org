@@ -147,34 +147,38 @@ system-configuration-features
 :CUSTOM_ID: emacs-nix-configuratuon
 :END:
 
-Use [[https://github.com/nix-community/emacs-overlay][emacs-overlay]] to install Emacs from source, based on the latest version on the master branch.
-To do this, add the overlay to the inputs in =flake.nix=:
+I'm running a [[https://github.com/jeffkreeftmeijer/.emacs.d][custom Emacs overlay]] based on [[https://github.com/nix-community/emacs-overlay][emacs-overlay]] to install Emacs from source, based on the latest version on the master branch:
+It's added as an input in =flake.nix=:
 
-#+begin_src diff
-	  index 3e15177..7e7eebc 100644
-  --- a/flake.nix
-  +++ b/flake.nix
-  @@ -7,12 +7,16 @@
-	 url = "github:nix-community/home-manager";
-	 inputs.nixpkgs.follows = "nixpkgs";
-       };
-  +    emacs-overlay = {
-  +      url = "github:nix-community/emacs-overlay";
-  +      inputs.nixpkgs.follows = "nixpkgs";
-  +    };
-     };
 
-  -  outputs = { nixpkgs, home-manager, ... }:
-  +  outputs = { nixpkgs, home-manager, emacs-overlay, ... }:
-       let
-	 system = "x86_64-darwin";
-  -      pkgs = nixpkgs.legacyPackages.${system};
-  +      pkgs = nixpkgs.legacyPackages.${system}.extend(emacs-overlay.overlay);
-       in {
-	 homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
-	   inherit pkgs;
+#+name: configured-emacs-input
+#+begin_src nix
+  configured-emacs = {
+    url = "github:jeffkreeftmeijer/.emacs.d/main";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 #+end_src
 
+In the outputs, =pkgs= is extended to include the overlay:
+
+#+name: flake-output
+#+begin_src nix
+  outputs = { nixpkgs, home-manager, configured-emacs, ... }:
+    let
+      system = "x86_64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system}.extend(configured-emacs.overlay);
+    in {
+      homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
+	inherit pkgs;
+
+	modules = [
+          ./home.nix
+	];
+      };
+    };
+#+end_src
+
+#+headers: :noweb yes
 #+headers: :tangle flake.nix
 #+headers: :exports none
 #+begin_src nix
@@ -187,29 +191,14 @@ To do this, add the overlay to the inputs in =flake.nix=:
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-      emacs-overlay = {
-        url = "github:nix-community/emacs-overlay";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      <<configured-emacs-input>>
     };
 
-    outputs = { nixpkgs, home-manager, emacs-overlay, ... }:
-      let
-        system = "x86_64-darwin";
-        pkgs = nixpkgs.legacyPackages.${system}.extend(emacs-overlay.overlay);
-      in {
-        homeConfigurations.jeffkreeftmeijer = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            ./home.nix
-          ];
-        };
-      };
+    <<flake-output>>
   }
 #+end_src
 
-Then, add the Emacs module, which enables the program and switches the package to =emacsGit-nox=:
+Then, add Emacs to =home.packages=:
 
 #+caption: =~/.config/nixpkgs/modules/emacs.nix=
 #+headers: :tangle modules/emacs.nix
@@ -217,8 +206,7 @@ Then, add the Emacs module, which enables the program and switches the package t
 #+begin_src nix
   { pkgs, ... }:
   {
-    programs.emacs.enable = true;
-    programs.emacs.package = pkgs.emacsGit;
+    home.packages = [ pkgs.configured-emacs pkgs.elixir-ls ];
   }
 #+end_src
 
