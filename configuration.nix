@@ -6,4 +6,5 @@
      "tunnelblick"
      "zoomus"
    ];
+   homebrew.onActivation.cleanup = "zap";
 }
