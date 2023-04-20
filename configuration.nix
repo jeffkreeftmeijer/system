@@ -3,6 +3,7 @@
    homebrew.enable = true;
    homebrew.casks = [
      "slack"
+     "spotify"
      "tunnelblick"
      "zoomus"
    ];
