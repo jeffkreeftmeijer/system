@@ -30,7 +30,7 @@
         inherit system;
 
         modules = [
-          ./modules/nix-daemon.nix
+          ./configuration.nix
         ];
       };
 
