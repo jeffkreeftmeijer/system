@@ -235,6 +235,13 @@ Then, add Emacs to =home.packages=:
   programs.git.userEmail = "jeff@kreeft.me";
 #+end_src
 
+**** Set the GPG signing key and sign commits and tags by default
+
+#+begin_src nix
+  programs.git.signing.key = "0x90A581FD6D796692";
+  programs.git.signing.signByDefault = true;
+#+end_src
+
 **** Use "main" as the default branch
 
 #+begin_src nix
