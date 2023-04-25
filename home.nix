@@ -6,6 +6,7 @@
     ./modules/direnv.nix
     ./modules/emacs.nix
     ./modules/git.nix
+    ./modules/gpg.nix
     ./modules/slack.nix
     ./modules/tmux.nix
     ./modules/zsh.nix
