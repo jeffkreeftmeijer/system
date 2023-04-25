@@ -359,8 +359,10 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 #+caption: =modules/pass.nix=
 #+headers: :tangle modules/pass.nix
 #+begin_src nix
+  { pkgs, ... }:
   {
     programs.password-store.enable = true;
+    programs.password-store.package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
   }
 #+end_src
 
