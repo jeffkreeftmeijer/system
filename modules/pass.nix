@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
   programs.password-store.enable = true;
-  programs.password-store.package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
+  programs.password-store.package = pkgs.pass.withExtensions (exts: [ exts.pass-otp exts.pass-audit ]);
 }
