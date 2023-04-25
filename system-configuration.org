@@ -334,6 +334,29 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
   }
 #+end_src
 
+** pass
+
+#+headers: :cache yes
+#+headers: :eval yes
+#+headers: :exports both
+#+headers: :results scalar
+#+begin_src shell
+  pass --version
+#+end_src
+
+*** Nix configuration
+:PROPERTIES:
+:CUSTOM_ID: pass-nix-configuratuon
+:END:
+
+#+caption: =modules/pass.nix=
+#+headers: :tangle modules/pass.nix
+#+begin_src nix
+  {
+    programs.password-store.enable = true;
+  }
+#+end_src
+
 ** tmux
 
 #+headers: :cache yes
@@ -600,6 +623,7 @@ Finally, the =home.nix= main configuration file imports all modules:
       ./modules/emacs.nix
       ./modules/git.nix
       ./modules/gpg.nix
+      ./modules/pass.nix
       ./modules/tmux.nix
       ./modules/zsh.nix
     ];

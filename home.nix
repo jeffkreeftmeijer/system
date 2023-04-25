@@ -7,6 +7,7 @@
     ./modules/emacs.nix
     ./modules/git.nix
     ./modules/gpg.nix
+    ./modules/pass.nix
     ./modules/slack.nix
     ./modules/tmux.nix
     ./modules/zsh.nix
