@@ -15,7 +15,7 @@
 
 Home manager added itself to =home.nix=, but we're moving it to a module to keep program-specific settings out of the main file:
 
-#+caption: =~/.config/nixpkgs/modules/home-manager.nix=
+#+caption: =modules/home-manager.nix=
 #+headers: :tangle modules/home-manager.nix
 #+headers: :noweb yes
 #+begin_src nix
@@ -200,7 +200,7 @@ In the outputs, =pkgs= is extended to include the overlay:
 
 Then, add Emacs to =home.packages=:
 
-#+caption: =~/.config/nixpkgs/modules/emacs.nix=
+#+caption: =modules/emacs.nix=
 #+headers: :tangle modules/emacs.nix
 #+headers: :noweb yes
 #+begin_src nix
@@ -258,7 +258,7 @@ Then, add Emacs to =home.packages=:
 :CUSTOM_ID: git-nix-configuratuon
 :END:
 
-#+caption: =~/.config/nixpkgs/modules/git.nix=
+#+caption: =modules/git.nix=
 #+headers: :tangle modules/git.nix
 #+headers: :noweb yes
 #+begin_src nix
@@ -343,7 +343,7 @@ cat ~/.config/git/config
 :CUSTOM_ID: tmux-nix-configuratuon
 :END:
 
-#+caption: =~/.config/nixpkgs/modules/tmux.nix=
+#+caption: =modules/tmux.nix=
 #+headers: :tangle modules/tmux.nix
 #+headers: :noweb yes
 #+begin_src nix
@@ -452,7 +452,7 @@ Since this depends on git, we'll also add git to this module's =home.packages= l
 :CUSTOM_ID: zsh-nix-configuratuon
 :END:
 
-#+caption: =~/.config/nixpkgs/modules/zsh.nix=
+#+caption: =modules/zsh.nix=
 #+headers: :tangle modules/zsh.nix
 #+headers: :noweb yes
 #+begin_src nix
@@ -546,7 +546,7 @@ bindkey '^[[B' history-substring-search-down
 
 Finally, the =home.nix= main configuration file imports all modules:
 
-#+caption: =~/.config/nixpkgs/home.nix=
+#+caption: =home.nix=
 #+headers: :tangle home.nix
 #+headers: :noweb yes
 #+begin_src nix
