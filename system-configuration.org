@@ -241,6 +241,12 @@ Then, add Emacs to =home.packages=:
   programs.git.extraConfig.init.defaultBranch = "main";
 #+end_src
 
+**** Set GitHub username
+
+#+begin_src nix
+  programs.git.extraConfig.github.user = "jeffkreeftmeijer";
+#+end_src
+
 **** Ignore ~.DS_Store~ files
 
 #+begin_src nix
