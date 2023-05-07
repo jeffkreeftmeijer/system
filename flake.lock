@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683246010,
-        "narHash": "sha256-FdK1ySzUS4zZMxRnytdf8oEswfGq21cljukt+nWWKLI=",
+        "lastModified": 1683269957,
+        "narHash": "sha256-gh+YgRDCZc/5qLoFmQJNFVwBgAtijfDSEocYfGszj74=",
         "owner": "jeffkreeftmeijer",
         "repo": ".emacs.d",
-        "rev": "448038a3684d950dca45951e850b3819e4ee9f07",
+        "rev": "889a241d239e8dfe468a8709132e35e4b468a58f",
         "type": "github"
       },
       "original": {
