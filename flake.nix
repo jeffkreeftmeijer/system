@@ -17,16 +17,16 @@
     };
   };
 
-  outputs = { nixpkgs, darwin, home-manager, configured-emacs, ... }:
+  outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
       system = "x86_64-darwin";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ configured-emacs.overlay ];
+        overlays = [ inputs.configured-emacs.overlay ];
         config.allowUnfree = true;
       };
     in {
-      darwinConfigurations."jeff-mbp" = darwin.lib.darwinSystem {
+      darwinConfigurations."jeff-mbp" = inputs.darwin.lib.darwinSystem {
         inherit system;
 
         modules = [
