@@ -18,15 +18,22 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+    configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs }:
   let
+    pkgs-with-overlay = import nixpkgs {
+      system = "aarch64-darwin";
+      overlays = [ configured-emacs.overlay ];
+    };
+
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ pkgs.vim
+          pkgs-with-overlay.configured-emacs
         ];
 
       homebrew = {
