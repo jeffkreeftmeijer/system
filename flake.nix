@@ -35,6 +35,9 @@
         onActivation = {
           cleanup = "zap";
         };
+
+        casks = ["slack"
+        ];
       };
 
       environment.variables.EDITOR = "vim";
