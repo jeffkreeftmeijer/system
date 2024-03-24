@@ -29,6 +29,10 @@
         [ pkgs.vim
         ];
 
+      homebrew = {
+        enable = true;
+      };
+
       environment.variables.EDITOR = "vim";
 
       system.defaults = {
