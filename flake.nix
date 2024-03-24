@@ -21,6 +21,7 @@
       system.defaults = {
         NSGlobalDomain = {
           AppleShowAllFiles = true; # Show hidden files in Finder
+          AppleShowAllExtensions = true; # Show file extensions in Finder
         };
         dock = {
           appswitcher-all-displays = true; # Show the app switcher on all displays
