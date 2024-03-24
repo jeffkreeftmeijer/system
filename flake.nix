@@ -36,7 +36,9 @@
           cleanup = "zap";
         };
 
-        casks = ["slack"
+        casks = [
+          "slack"
+          "docker"
         ];
       };
 
