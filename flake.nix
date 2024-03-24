@@ -31,6 +31,10 @@
 
       homebrew = {
         enable = true;
+
+        onActivation = {
+          cleanup = "zap";
+        };
       };
 
       environment.variables.EDITOR = "vim";
