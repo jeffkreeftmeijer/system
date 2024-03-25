@@ -150,6 +150,7 @@
             programs.git.ignores = ["DS_Store" ".envrc"];
 
             programs.zsh.enable = true;
+            programs.zsh.historySubstringSearch.enable = true;
           };
         }
       ];
