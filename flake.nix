@@ -57,7 +57,7 @@
         };
       };
 
-      environment.variables.EDITOR = "vim";
+      environment.variables.EDITOR = "emacsclient --reuse-frame";
 
       system.defaults = {
         NSGlobalDomain = {
