@@ -41,6 +41,10 @@
           "zoom"
           "docker"
         ];
+
+        masApps = {
+          "wireguard" = 1451685025;
+        };
       };
 
       environment.variables.EDITOR = "vim";
