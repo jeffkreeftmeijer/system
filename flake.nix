@@ -38,6 +38,7 @@
       environment.systemPackages =
         [ pkgs.vim
           pkgs-with-overlay.configured-emacs
+          pkgs.devenv
         ];
 
       services.emacs.enable = true;
