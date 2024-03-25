@@ -22,6 +22,7 @@
         NSGlobalDomain = {
           AppleShowAllFiles = true; # Show hidden files in Finder
           AppleShowAllExtensions = true; # Show file extensions in Finder
+          "com.apple.sound.beep.volume" = 0.000;
         };
         dock = {
           appswitcher-all-displays = true; # Show the app switcher on all displays
