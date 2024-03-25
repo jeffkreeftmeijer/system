@@ -36,6 +36,9 @@
           pkgs-with-overlay.configured-emacs
         ];
 
+      services.emacs.enable = true;
+      services.emacs.package = pkgs-with-overlay.configured-emacs;
+
       homebrew = {
         enable = true;
 
