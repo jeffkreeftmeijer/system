@@ -139,9 +139,6 @@
             home.username = "jeff";
             home.homeDirectory = "/Users/jeff";
             home.stateVersion = "23.11";
-            home.shellAliases = {
-              emacs = "emacsclient --reuse-frame --no-wait";
-            };
 
             programs.git.enable = true;
             programs.git.userName = "Jeff Kreeftmeijer";
