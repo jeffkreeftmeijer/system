@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -21,7 +23,7 @@
     configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs }:
   let
     pkgs-with-overlay = import nixpkgs {
       system = "aarch64-darwin";
@@ -29,6 +31,8 @@
     };
 
     configuration = { pkgs, ... }: {
+      users.users.jeff.home = "/Users/jeff";
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
@@ -125,6 +129,16 @@
 
             # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
             mutableTaps = false;
+          };
+        }
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jeff = {
+            home.username = "jeff";
+            home.homeDirectory = "/Users/jeff";
+            home.stateVersion = "23.11";
           };
         }
       ];
