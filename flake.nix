@@ -156,7 +156,14 @@
             programs.git.signing.signByDefault = true;
             programs.git.extraConfig.init.defaultBranch = "main";
             programs.git.extraConfig.github.user = "jeffkreeftmeijer";
-            programs.git.ignores = ["DS_Store" ".envrc"];
+            programs.git.ignores = [
+              "DS_Store"
+              ".envrc"
+              ".devenv*"
+              "devenv.local.nix"
+              ".direnv"
+              ".pre-commit-config.yaml"
+            ];
 
             programs.zsh.enable = true;
             programs.zsh.historySubstringSearch.enable = true;
