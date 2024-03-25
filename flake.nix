@@ -148,6 +148,8 @@
             programs.git.extraConfig.init.defaultBranch = "main";
             programs.git.extraConfig.github.user = "jeffkreeftmeijer";
             programs.git.ignores = ["DS_Store" ".envrc"];
+
+            programs.zsh.enable = true;
           };
         }
       ];
