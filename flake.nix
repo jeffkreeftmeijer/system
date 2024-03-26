@@ -21,9 +21,10 @@
       flake = false;
     };
     configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs, apple-fonts }:
   let
     pkgs-with-overlay = import nixpkgs {
       system = "aarch64-darwin";
@@ -40,6 +41,11 @@
           pkgs-with-overlay.configured-emacs
           pkgs.devenv
         ];
+
+      fonts.fontDir.enable = true;
+      fonts.fonts = [
+        apple-fonts.packages.${pkgs.system}.sf-mono
+      ];
 
       services.emacs.enable = true;
       services.emacs.package = pkgs-with-overlay.configured-emacs;
