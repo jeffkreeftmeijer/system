@@ -55,6 +55,7 @@
           "slack"
           "zoom"
           "docker"
+          "spotify"
         ];
 
         masApps = {
