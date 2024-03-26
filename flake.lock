@@ -23,11 +23,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1711370031,
-        "narHash": "sha256-eUCFx968gmCxWYETPjS8xYAS0LucdENb+YbhHdGLZVo=",
+        "lastModified": 1711448553,
+        "narHash": "sha256-SGs/Sek1qNRswNCKblQzC/7HzDPztWoCyQBnvAcSXHY=",
         "owner": "jeffkreeftmeijer",
         "repo": ".emacs.d",
-        "rev": "3560abd28bde5eb7617218446cae627be864011d",
+        "rev": "e8978e7bab4ed985cb8554d6812c9d0a8746506f",
         "type": "github"
       },
       "original": {
