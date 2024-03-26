@@ -66,6 +66,7 @@
 
         masApps = {
           "wireguard" = 1451685025;
+          "adblock plus for safari" = 1432731683;
         };
       };
 
