@@ -157,6 +157,10 @@
             home.homeDirectory = "/Users/jeff";
             home.stateVersion = "23.11";
 
+            targets.darwin.defaults = {
+             "com.apple.Safari".IncludeDevelopMenu = true;
+            };
+
             programs.direnv.enable = true;
 
             programs.git.enable = true;
