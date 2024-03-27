@@ -37,7 +37,7 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ pkgs.vim
+        [
           pkgs-with-overlay.configured-emacs
           pkgs.devenv
         ];
