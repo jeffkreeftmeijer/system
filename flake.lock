@@ -47,11 +47,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1711448553,
-        "narHash": "sha256-SGs/Sek1qNRswNCKblQzC/7HzDPztWoCyQBnvAcSXHY=",
+        "lastModified": 1711475231,
+        "narHash": "sha256-+m75AR+benoyxwVm7M7iGLxHso4Z8gijqDsB/O6JssA=",
         "owner": "jeffkreeftmeijer",
         "repo": ".emacs.d",
-        "rev": "e8978e7bab4ed985cb8554d6812c9d0a8746506f",
+        "rev": "18abda27a333a2012717ae45a98fc9fa742cb196",
         "type": "github"
       },
       "original": {
