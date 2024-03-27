@@ -45,6 +45,7 @@
       fonts.fontDir.enable = true;
       fonts.fonts = [
         apple-fonts.packages.${pkgs.system}.sf-mono
+        apple-fonts.packages.${pkgs.system}.sf-pro
       ];
 
       services.emacs.enable = true;
