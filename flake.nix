@@ -159,7 +159,8 @@
             home.stateVersion = "23.11";
 
             targets.darwin.defaults = {
-             "com.apple.Safari".IncludeDevelopMenu = true;
+              "com.apple.Safari".IncludeDevelopMenu = true;
+              "com.apple.Safari".ShowFullURLInSmartSearchField = true;
             };
 
             programs.direnv.enable = true;
