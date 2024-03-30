@@ -162,6 +162,7 @@
             targets.darwin.defaults = {
               "com.apple.Safari".IncludeDevelopMenu = true;
               "com.apple.Safari".ShowFullURLInSmartSearchField = true;
+              "com.apple.Safari".AutoFillPasswords = true;
             };
 
             programs.direnv.enable = true;
