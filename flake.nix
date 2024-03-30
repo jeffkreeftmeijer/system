@@ -40,6 +40,7 @@
         [
           pkgs-with-overlay.configured-emacs
           pkgs.devenv
+          pkgs.nodejs
         ];
 
       fonts.fontDir.enable = true;
