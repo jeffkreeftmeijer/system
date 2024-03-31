@@ -195,6 +195,7 @@
             export PS1='%~ $(__git_ps1 "(%s) ")%# '
             export RPS1=
             '';
+            programs.zsh.autosuggestion.enable = true;
           };
         }
       ];
