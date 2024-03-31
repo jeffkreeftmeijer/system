@@ -188,13 +188,6 @@
             ];
 
             programs.zsh.enable = true;
-            programs.zsh.initExtra =
-            ''
-            source /etc/profiles/per-user/$USER/share/bash-completion/completions/git-prompt.sh
-            setopt PROMPT_SUBST
-            export PS1='%~ $(__git_ps1 "(%s) ")%# '
-            export RPS1=
-            '';
             programs.zsh.autosuggestion.enable = true;
 
             programs.starship.enable = true;
