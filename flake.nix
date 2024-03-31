@@ -187,6 +187,7 @@
               ".pre-commit-config.yaml"
             ];
 
+            programs.bash.enable = true;
             programs.zsh.enable = true;
             programs.zsh.autosuggestion.enable = true;
 
