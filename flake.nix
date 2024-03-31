@@ -38,6 +38,8 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
+          pkgs.coreutils
+          pkgs.uutils-coreutils-noprefix
           pkgs-with-overlay.configured-emacs
           pkgs.devenv
           pkgs.nodejs
