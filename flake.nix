@@ -167,6 +167,8 @@
               "com.apple.Safari".AutoFillPasswords = true;
             };
 
+            programs.atuin.enable = true;
+
             programs.direnv.enable = true;
 
             programs.git.enable = true;
