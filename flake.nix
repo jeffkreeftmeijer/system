@@ -196,6 +196,24 @@
             export RPS1=
             '';
             programs.zsh.autosuggestion.enable = true;
+
+            programs.starship.enable = true;
+            programs.starship.settings = {
+              format = "$directory$git_branch$shell";
+              add_newline = false;
+              directory = {
+                truncate_to_repo = false;
+                style = "";
+              };
+              git_branch = {
+                format = "\\($branch\\) ";
+              };
+              shell = {
+                zsh_indicator = "%";
+                bash_indicator = "\\$";
+                disabled = false;
+              };
+            };
           };
         }
       ];
