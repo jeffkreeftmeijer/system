@@ -188,7 +188,6 @@
             ];
 
             programs.zsh.enable = true;
-            programs.zsh.historySubstringSearch.enable = true;
             programs.zsh.initExtra =
             ''
             source /etc/profiles/per-user/$USER/share/bash-completion/completions/git-prompt.sh
