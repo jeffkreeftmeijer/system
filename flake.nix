@@ -68,6 +68,7 @@
           "zoom"
           "docker"
           "spotify"
+          "whatsapp"
         ];
 
         masApps = {
