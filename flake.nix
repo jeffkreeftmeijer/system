@@ -49,6 +49,8 @@
       fonts.fonts = [
         apple-fonts.packages.${pkgs.system}.sf-mono
         apple-fonts.packages.${pkgs.system}.sf-pro
+        pkgs.iosevka-bin
+     	  (pkgs.iosevka-bin.override { variant = "Aile"; })
       ];
 
       services.emacs.enable = true;
