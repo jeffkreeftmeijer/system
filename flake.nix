@@ -204,7 +204,8 @@
                 style = "";
               };
               git_branch = {
-                format = "\\($branch\\) ";
+                format = "[\\($branch(:$remote_branch)\\)]($style) ";
+                style = "";
               };
               shell = {
                 zsh_indicator = "%";
