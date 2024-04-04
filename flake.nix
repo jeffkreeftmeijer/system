@@ -211,6 +211,7 @@
                 zsh_indicator = "%";
                 bash_indicator = "\\$";
                 disabled = false;
+                style = "";
               };
             };
           };
