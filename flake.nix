@@ -20,17 +20,12 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d";
+    configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d/bankrupt";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs, apple-fonts }:
   let
-    pkgs-with-overlay = import nixpkgs {
-      system = "aarch64-darwin";
-      overlays = [ configured-emacs.overlay ];
-    };
-
     configuration = { pkgs, ... }: {
       users.users.jeff.home = "/Users/jeff";
 
@@ -40,7 +35,7 @@
         [
           pkgs.coreutils
           pkgs.uutils-coreutils-noprefix
-          pkgs-with-overlay.configured-emacs
+          configured-emacs.packages.${pkgs.system}.configured-emacs
           pkgs.devenv
           pkgs.nodejs
         ];
@@ -54,7 +49,7 @@
       ];
 
       services.emacs.enable = true;
-      services.emacs.package = pkgs-with-overlay.configured-emacs;
+      services.emacs.package = configured-emacs.packages.${pkgs.system}.configured-emacs;
 
       homebrew = {
         enable = true;
