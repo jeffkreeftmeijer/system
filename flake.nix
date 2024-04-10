@@ -51,7 +51,6 @@
         };
 
         casks = [
-          "zoom"
           "docker"
           "spotify"
           "whatsapp"
@@ -195,6 +194,7 @@
         ./modules/coreutils.nix
         ./modules/emacs.nix
         ./modules/slack.nix
+        ./modules/zoom.nix
         ./modules/zsh.nix
       ];
     };
