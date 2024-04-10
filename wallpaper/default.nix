@@ -1,5 +1,10 @@
 {
   system.activationScripts.postUserActivation.text = ''
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"/System/Library/Desktop Pictures/Solid Colors/Space Gray Pro.png\" as POSIX file"
+    osascript -e "
+      tell application \"System Events\"
+        tell every desktop
+          set picture to \"~/.config/nix/wallpaper/dark.png\"
+        end tell
+      end tell"
   '';
 }
