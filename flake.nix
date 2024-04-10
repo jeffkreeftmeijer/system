@@ -55,20 +55,15 @@
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
-            # install homebrew under the default prefix
             enable = true;
-
-            # user owning the homebrew prefix
             user = "jeff";
 
-            # declarative tap management
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
               "homebrew/homebrew-bundle" = homebrew-bundle;
             };
 
-            # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
             mutableTaps = false;
           };
         }
