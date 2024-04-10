@@ -24,7 +24,10 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d/bankrupt";
+    configured-emacs = {
+      url = "github:jeffkreeftmeijer/.emacs.d/bankrupt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
