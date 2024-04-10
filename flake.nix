@@ -54,10 +54,6 @@
           cleanup = "zap";
         };
 
-        casks = [
-          "docker"
-        ];
-
         masApps = {
           "wireguard" = 1451685025;
           "adblock plus for safari" = 1432731683;
@@ -194,6 +190,7 @@
         ./wallpaper
         ./modules/atuin.nix
         ./modules/coreutils.nix
+        ./modules/docker.nix
         ./modules/emacs.nix
         ./modules/slack.nix
         ./modules/spotify.nix
