@@ -35,7 +35,6 @@
       environment.systemPackages =
         [
           pkgs.coreutils
-          pkgs.uutils-coreutils-noprefix
           configured-emacs.packages.${pkgs.system}.configured-emacs
           pkgs.devenv
         ];
