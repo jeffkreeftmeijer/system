@@ -1,3 +1,6 @@
 {
-  homebrew.casks = [ "whatsapp" ];
+  homebrew = {
+    enable = true;
+    casks = [ "whatsapp" ];
+  };
 }

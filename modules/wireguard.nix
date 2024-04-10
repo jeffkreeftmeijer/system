@@ -1,3 +1,6 @@
 {
-  homebrew.masApps."wireguard" = 1451685025;
+  homebrew = {
+    enable = true;
+    masApps."wireguard" = 1451685025;
+  };
 }

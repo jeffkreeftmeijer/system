@@ -1,3 +1,6 @@
 {
-  homebrew.casks = [ "docker" ];
+  homebrew = {
+    enable = true;
+    casks = [ "docker" ];
+  };
 }
