@@ -38,7 +38,6 @@
           pkgs.uutils-coreutils-noprefix
           configured-emacs.packages.${pkgs.system}.configured-emacs
           pkgs.devenv
-          pkgs.nodejs
         ];
 
       services.emacs.enable = true;
