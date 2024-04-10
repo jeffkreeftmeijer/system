@@ -165,7 +165,6 @@
             };
 
             imports = [
-              ./programs/atuin.nix
             ];
 
             programs.direnv.enable = true;
@@ -211,6 +210,7 @@
             };
           };
         }
+        ./programs/atuin.nix
       ];
     };
 
