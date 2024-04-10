@@ -45,7 +45,6 @@
         [
           pkgs.coreutils
           pkgs.emacs
-          pkgs.devenv
         ];
 
       services.emacs.enable = true;
@@ -182,14 +181,7 @@
             programs.git.signing.signByDefault = true;
             programs.git.extraConfig.init.defaultBranch = "main";
             programs.git.extraConfig.github.user = "jeffkreeftmeijer";
-            programs.git.ignores = [
-              "DS_Store"
-              ".envrc"
-              ".devenv*"
-              "devenv.local.nix"
-              ".direnv"
-              ".pre-commit-config.yaml"
-            ];
+            programs.git.ignores = [ "DS_Store" ];
 
             programs.bash.enable = true;
             programs.zsh.enable = true;
