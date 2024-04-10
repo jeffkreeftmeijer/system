@@ -26,7 +26,9 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs, apple-fonts }:
   let
-    configuration = { pkgs, ... }: {
+    system = "aarch64-darwin";
+    pkgs = import nixpkgs { inherit system; };
+    configuration = {
       users.users.jeff.home = "/Users/jeff";
 
       # List packages installed in system profile. To search by name, run:
@@ -122,7 +124,7 @@
       system.stateVersion = 4;
 
       # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
+      nixpkgs.hostPlatform = system;
     };
   in
   {
