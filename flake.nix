@@ -55,7 +55,6 @@
         };
 
         masApps = {
-          "wireguard" = 1451685025;
           "adblock plus for safari" = 1432731683;
         };
       };
@@ -195,6 +194,7 @@
         ./modules/slack.nix
         ./modules/spotify.nix
         ./modules/whatsapp.nix
+        ./modules/wireguard.nix
         ./modules/zoom.nix
         ./modules/zsh.nix
       ];
