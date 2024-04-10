@@ -93,26 +93,6 @@
             programs.git.ignores = [ "DS_Store" ];
 
             programs.bash.enable = true;
-
-            programs.starship.enable = true;
-            programs.starship.settings = {
-              format = "$directory$git_branch$shell";
-              add_newline = false;
-              directory = {
-                truncate_to_repo = false;
-                style = "";
-              };
-              git_branch = {
-                format = "[\\($branch(:$remote_branch)\\)]($style) ";
-                style = "";
-              };
-              shell = {
-                zsh_indicator = "%";
-                bash_indicator = "\\$";
-                disabled = false;
-                style = "";
-              };
-            };
           };
         }
         ./configuration.nix
@@ -127,6 +107,7 @@
         ./modules/slack.nix
         ./modules/spotify.nix
         ./modules/whatsapp.nix
+        ./modules/starship.nix
         ./modules/wireguard.nix
         ./modules/zoom.nix
         ./modules/zsh.nix
