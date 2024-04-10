@@ -111,10 +111,6 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
-      # programs.fish.enable = true;
-
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -186,8 +182,6 @@
             programs.git.ignores = [ "DS_Store" ];
 
             programs.bash.enable = true;
-            programs.zsh.enable = true;
-            programs.zsh.autosuggestion.enable = true;
 
             programs.starship.enable = true;
             programs.starship.settings = {
@@ -212,6 +206,7 @@
         }
         ./modules/atuin.nix
         ./modules/coreutils.nix
+        ./modules/zsh.nix
       ];
     };
 
