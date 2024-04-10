@@ -172,7 +172,9 @@
               "com.apple.iCal"."Show Week Numbers" = true;
             };
 
-            programs.atuin.enable = true;
+            imports = [
+              ./programs/atuin.nix
+            ];
 
             programs.direnv.enable = true;
 
