@@ -47,17 +47,6 @@
     configuration = {
       users.users.jeff.home = "/Users/jeff";
 
-      homebrew = {
-        enable = true;
-
-        onActivation = {
-          cleanup = "zap";
-        };
-
-        masApps = {
-          "adblock plus for safari" = 1432731683;
-        };
-      };
 
       environment.variables.EDITOR = "vim";
 
@@ -192,6 +181,7 @@
         ./modules/coreutils.nix
         ./modules/docker.nix
         ./modules/emacs.nix
+        ./modules/homebrew.nix
         ./modules/slack.nix
         ./modules/spotify.nix
         ./modules/whatsapp.nix
