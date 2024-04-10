@@ -99,11 +99,6 @@
         };
       };
 
-      imports = [
-        ./fonts.nix
-        ./wallpaper
-      ];
-
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
       # nix.package = pkgs.nix;
@@ -167,9 +162,6 @@
               "com.apple.iCal"."Show Week Numbers" = true;
             };
 
-            imports = [
-            ];
-
             programs.direnv.enable = true;
 
             programs.git.enable = true;
@@ -204,6 +196,8 @@
             };
           };
         }
+        ./fonts.nix
+        ./wallpaper
         ./modules/atuin.nix
         ./modules/coreutils.nix
         ./modules/zsh.nix
