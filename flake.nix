@@ -91,8 +91,6 @@
             programs.git.extraConfig.init.defaultBranch = "main";
             programs.git.extraConfig.github.user = "jeffkreeftmeijer";
             programs.git.ignores = [ "DS_Store" ];
-
-            programs.bash.enable = true;
           };
         }
         ./configuration.nix
