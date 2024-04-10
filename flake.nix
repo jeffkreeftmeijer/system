@@ -43,15 +43,6 @@
     configuration = {
       users.users.jeff.home = "/Users/jeff";
 
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [
-          pkgs.emacs
-        ];
-
-      services.emacs.enable = true;
-
       homebrew = {
         enable = true;
 
@@ -202,6 +193,7 @@
         ./wallpaper
         ./modules/atuin.nix
         ./modules/coreutils.nix
+        ./modules/emacs.nix
         ./modules/slack.nix
         ./modules/zsh.nix
       ];
