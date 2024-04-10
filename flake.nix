@@ -187,6 +187,7 @@
         }
         ./fonts.nix
         ./wallpaper
+        ./modules/adblock.nix
         ./modules/atuin.nix
         ./modules/coreutils.nix
         ./modules/docker.nix
