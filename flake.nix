@@ -121,6 +121,8 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+      inherit pkgs;
+
       modules = [
         configuration
         nix-homebrew.darwinModules.nix-homebrew
