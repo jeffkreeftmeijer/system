@@ -56,7 +56,6 @@
 
         casks = [
           "docker"
-          "whatsapp"
         ];
 
         masApps = {
@@ -198,6 +197,7 @@
         ./modules/emacs.nix
         ./modules/slack.nix
         ./modules/spotify.nix
+        ./modules/whatsapp.nix
         ./modules/zoom.nix
         ./modules/zsh.nix
       ];
