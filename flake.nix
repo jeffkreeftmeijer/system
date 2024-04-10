@@ -27,10 +27,15 @@
     configured-emacs.url = "github:jeffkreeftmeijer/.emacs.d/bankrupt";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, configured-emacs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
   let
     system = "aarch64-darwin";
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [(final: prev: rec {
+        emacs = inputs.configured-emacs.packages.${system}.configured-emacs;
+      })];
+    };
     configuration = {
       users.users.jeff.home = "/Users/jeff";
 
@@ -39,12 +44,11 @@
       environment.systemPackages =
         [
           pkgs.coreutils
-          configured-emacs.packages.${pkgs.system}.configured-emacs
+          pkgs.emacs
           pkgs.devenv
         ];
 
       services.emacs.enable = true;
-      services.emacs.package = configured-emacs.packages.${pkgs.system}.configured-emacs;
 
       homebrew = {
         enable = true;
