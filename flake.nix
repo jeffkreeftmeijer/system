@@ -43,7 +43,6 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
-          pkgs.coreutils
           pkgs.emacs
         ];
 
@@ -209,6 +208,7 @@
           };
         }
         ./modules/atuin.nix
+        ./modules/coreutils.nix
       ];
     };
 
