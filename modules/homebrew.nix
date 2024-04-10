@@ -1,6 +1,3 @@
 {
-  homebrew = {
-    enable = true;
-    onActivation.cleanup = "zap";
-  };
+  homebrew.onActivation.cleanup = "zap";
 }
