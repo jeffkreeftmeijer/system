@@ -208,7 +208,7 @@
             };
           };
         }
-        ./programs/atuin.nix
+        ./modules/atuin.nix
       ];
     };
 
