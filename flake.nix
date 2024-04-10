@@ -58,9 +58,6 @@
             # install homebrew under the default prefix
             enable = true;
 
-            # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
-            enableRosetta = true;
-
             # user owning the homebrew prefix
             user = "jeff";
 
