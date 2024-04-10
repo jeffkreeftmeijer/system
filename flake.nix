@@ -38,6 +38,7 @@
       overlays = [(final: prev: rec {
         emacs = inputs.configured-emacs.packages.${system}.configured-emacs;
       })];
+      config.allowUnfree = true;
     };
     configuration = {
       users.users.jeff.home = "/Users/jeff";
@@ -59,7 +60,6 @@
         };
 
         casks = [
-          "slack"
           "zoom"
           "docker"
           "spotify"
@@ -202,6 +202,7 @@
         ./wallpaper
         ./modules/atuin.nix
         ./modules/coreutils.nix
+        ./modules/slack.nix
         ./modules/zsh.nix
       ];
     };
