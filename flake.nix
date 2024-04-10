@@ -47,9 +47,6 @@
     configuration = {
       users.users.jeff.home = "/Users/jeff";
 
-
-      environment.variables.EDITOR = "vim";
-
       system = {
         defaults = {
           NSGlobalDomain = {
