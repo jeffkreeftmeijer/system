@@ -6,6 +6,7 @@
       add_newline = false;
       directory = {
         truncate_to_repo = false;
+        truncation_length = 0;
         style = "";
       };
       git_branch = {
