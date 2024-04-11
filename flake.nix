@@ -34,7 +34,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
   let
     system = "aarch64-darwin";
     pkgs = import nixpkgs {
@@ -50,16 +50,16 @@
       inherit pkgs;
 
       modules = [
-        nix-homebrew.darwinModules.nix-homebrew
+        inputs.nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
             enable = true;
             user = "jeff";
 
             taps = {
-              "homebrew/homebrew-core" = homebrew-core;
-              "homebrew/homebrew-cask" = homebrew-cask;
-              "homebrew/homebrew-bundle" = homebrew-bundle;
+              "homebrew/homebrew-core" = inputs.homebrew-core;
+              "homebrew/homebrew-cask" = inputs.homebrew-cask;
+              "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
             };
 
             mutableTaps = false;
