@@ -9,6 +9,12 @@
       static-only = true; # Only show open apps in the Dock
       tilesize = 64; # Reset the Dock icon size to 64
     };
+    "com.apple.finder" = {
+      DisableAllAnimations = true; # Disable animations
+      ShowStatusBar = true; # Show status bar
+      ShowPathbar = true; # Show path bar (breadcrumbs)
+      "_FXShowPosixPathInTitle" = true; # Show full path
+    };
     "com.apple.ical" = {
       "Show Week Numbers" = true;
     };
