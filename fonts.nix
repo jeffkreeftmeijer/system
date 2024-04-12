@@ -4,6 +4,6 @@
   fonts.fontDir.enable = true;
   fonts.fonts = [
     pkgs.iosevka-bin
-    (pkgs.iosevka-bin.override { variant = "Aile"; })
+    (pkgs.iosevka-bin.override { variant = "aile"; })
   ];
 }
