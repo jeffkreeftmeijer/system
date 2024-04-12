@@ -14,3 +14,4 @@ reset_defaults:
 	-defaults delete com.apple.dock
 	-defaults delete com.apple.ical
 	-defaults delete com.apple.safari
+	-defaults delete com.apple.universalaccess

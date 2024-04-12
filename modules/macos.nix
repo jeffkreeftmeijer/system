@@ -17,5 +17,8 @@
       ShowFullURLInSmartSearchField = true;
       AutoFillPasswords = true;
     };
+    "com.apple.universalaccess" = {
+      reduceTransparency = true;
+    };
   };
 }
