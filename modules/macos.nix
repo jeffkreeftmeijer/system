@@ -20,5 +20,12 @@
     "com.apple.universalaccess" = {
       reduceTransparency = true;
     };
+    NSGlobalDomain = {
+      AppleShowAllFiles = true; # Show hidden files in Finder
+      AppleShowAllExtensions = true; # Show file extensions in Finder
+      "com.apple.sound.beep.volume" = 0.000;
+      InitialKeyRepeat = 15;
+      KeyRepeat = 2;
+    };
   };
 }

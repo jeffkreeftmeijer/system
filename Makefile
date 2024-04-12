@@ -15,3 +15,4 @@ reset_defaults:
 	-defaults delete com.apple.ical
 	-defaults delete com.apple.safari
 	-defaults delete com.apple.universalaccess
+	-defaults delete NSGlobalDomain
