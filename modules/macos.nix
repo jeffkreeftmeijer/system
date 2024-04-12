@@ -6,6 +6,7 @@
       autohide-delay = 0.0; # ... immediately
       autohide-time-modifier = 0.0; # ... and instantly
       launchanim = false; # No launch animations
+      mineffect = "scale"; # Use "scale" effect when minimising windows
       static-only = true; # Only show open apps in the Dock
       tilesize = 64; # Reset the Dock icon size to 64
     };
