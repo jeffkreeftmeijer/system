@@ -9,3 +9,8 @@ update_nixpkgs:
 
 update_emacs:
 	nix flake lock --update-input configured-emacs
+
+reset_defaults:
+	-defaults delete com.apple.dock
+	-defaults delete com.apple.ical
+	-defaults delete com.apple.safari
