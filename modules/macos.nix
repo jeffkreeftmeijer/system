@@ -9,6 +9,7 @@
       mineffect = "scale"; # Use "scale" effect when minimising windows
       static-only = true; # Only show open apps in the Dock
       tilesize = 64; # Reset the Dock icon size to 64
+      "scroll-to-open" = true; # Scroll on a Dock icon to see its windows
     };
     "com.apple.finder" = {
       DisableAllAnimations = true; # Disable animations
