@@ -87,6 +87,7 @@
         ./modules/emacs.nix
         ./modules/git.nix
         ./modules/homebrew.nix
+        ./modules/keyboard.nix
         ./modules/macos.nix
         ./modules/slack.nix
         ./modules/spotify.nix
