@@ -74,13 +74,6 @@
             home.homeDirectory = "/Users/jeff";
             home.stateVersion = "23.11";
 
-            targets.darwin.defaults = {
-              "com.apple.Safari".IncludeDevelopMenu = true;
-              "com.apple.Safari".ShowFullURLInSmartSearchField = true;
-              "com.apple.Safari".AutoFillPasswords = true;
-              "com.apple.iCal"."Show Week Numbers" = true;
-            };
-
             programs.direnv.enable = true;
           };
         }
@@ -94,6 +87,7 @@
         ./modules/emacs.nix
         ./modules/git.nix
         ./modules/homebrew.nix
+        ./modules/macos.nix
         ./modules/slack.nix
         ./modules/spotify.nix
         ./modules/whatsapp.nix
