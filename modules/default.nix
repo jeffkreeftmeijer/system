@@ -5,6 +5,7 @@
     ./coreutils.nix
     ./docker.nix
     ./emacs.nix
+    ./fonts.nix
     ./git.nix
     ./homebrew.nix
     ./keyboard.nix

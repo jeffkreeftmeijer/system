@@ -78,7 +78,6 @@
           };
         }
         ./configuration.nix
-        ./fonts.nix
         ./wallpaper
         ./modules
       ];
