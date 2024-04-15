@@ -82,5 +82,10 @@
         ./modules
       ];
     };
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      modules = [
+        ./machines/nixos/configuration.nix
+      ];
+    };
   };
 }
