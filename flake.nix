@@ -93,6 +93,7 @@
         ./modules/spotify.nix
         ./modules/whatsapp.nix
         ./modules/starship.nix
+        ./modules/utm.nix
         ./modules/wireguard.nix
         ./modules/zoom.nix
         ./modules/zsh.nix
