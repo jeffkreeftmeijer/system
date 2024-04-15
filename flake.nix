@@ -87,6 +87,16 @@
           };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       modules = [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jeff = {
+            home.username = "jeff";
+            home.homeDirectory = "/home/jeff";
+            home.stateVersion = "23.11";
+          };
+        }
         ./machines/nixos/configuration.nix
       ];
     };
