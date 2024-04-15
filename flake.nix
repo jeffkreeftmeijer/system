@@ -95,6 +95,7 @@
           };
         }
         ./machines/nixos/configuration.nix
+        ./modules/git.nix
       ];
     };
   };
