@@ -99,7 +99,5 @@
         ./modules/zsh.nix
       ];
     };
-
-    darwinPackages = self.darwinConfigurations."macos".pkgs;
   };
 }
