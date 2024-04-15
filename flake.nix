@@ -80,23 +80,7 @@
         ./configuration.nix
         ./fonts.nix
         ./wallpaper
-        ./modules/adblock.nix
-        ./modules/atuin.nix
-        ./modules/coreutils.nix
-        ./modules/docker.nix
-        ./modules/emacs.nix
-        ./modules/git.nix
-        ./modules/homebrew.nix
-        ./modules/keyboard.nix
-        ./modules/macos.nix
-        ./modules/slack.nix
-        ./modules/spotify.nix
-        ./modules/whatsapp.nix
-        ./modules/starship.nix
-        ./modules/utm.nix
-        ./modules/wireguard.nix
-        ./modules/zoom.nix
-        ./modules/zsh.nix
+        ./modules
       ];
     };
   };
