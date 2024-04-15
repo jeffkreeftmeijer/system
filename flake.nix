@@ -95,6 +95,7 @@
           };
         }
         ./machines/nixos/configuration.nix
+        ./modules/atuin.nix
         ./modules/git.nix
       ];
     };
