@@ -46,7 +46,7 @@
     };
   in
   {
-    darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
       inherit pkgs;
 
       modules = [
@@ -100,6 +100,6 @@
       ];
     };
 
-    darwinPackages = self.darwinConfigurations."simple".pkgs;
+    darwinPackages = self.darwinConfigurations."macos".pkgs;
   };
 }
