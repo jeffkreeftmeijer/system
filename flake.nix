@@ -35,52 +35,55 @@
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
-  let
-    system = "aarch64-darwin";
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [(final: prev: rec {
-        emacs = inputs.configured-emacs.packages.${system}.configured-emacs;
-      })];
-      config.allowUnfree = true;
-    };
-  in
-  {
-    darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
-      inherit pkgs;
+    {
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [(final: prev: rec {
+              emacs = inputs.configured-emacs.packages.${system}.configured-emacs;
+            })];
+            config.allowUnfree = true;
+          };
+        in
+          {
+            macos = nix-darwin.lib.darwinSystem {
+              inherit pkgs;
 
-      modules = [
-        inputs.nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = true;
-            user = "jeff";
+              modules = [
+                inputs.nix-homebrew.darwinModules.nix-homebrew
+                {
+                  nix-homebrew = {
+                    enable = true;
+                    user = "jeff";
 
-            taps = {
-              "homebrew/homebrew-core" = inputs.homebrew-core;
-              "homebrew/homebrew-cask" = inputs.homebrew-cask;
-              "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+                    taps = {
+                      "homebrew/homebrew-core" = inputs.homebrew-core;
+                      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+                    };
+
+                    mutableTaps = false;
+                  };
+                }
+                home-manager.darwinModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.jeff = {
+                    home.username = "jeff";
+                    home.homeDirectory = "/Users/jeff";
+                    home.stateVersion = "23.11";
+
+                    programs.direnv.enable = true;
+                  };
+                }
+                ./configuration.nix
+                ./wallpaper
+                ./modules
+              ];
             };
-
-            mutableTaps = false;
           };
-        }
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jeff = {
-            home.username = "jeff";
-            home.homeDirectory = "/Users/jeff";
-            home.stateVersion = "23.11";
-
-            programs.direnv.enable = true;
-          };
-        }
-        ./configuration.nix
-        ./wallpaper
-        ./modules
-      ];
     };
-  };
 }
