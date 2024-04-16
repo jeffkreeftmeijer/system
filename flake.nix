@@ -63,7 +63,6 @@
               home.homeDirectory = "/Users/jeff";
               home.stateVersion = "23.11";
 
-              programs.direnv.enable = true;
               programs.emacs.package =
                 inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
             };
