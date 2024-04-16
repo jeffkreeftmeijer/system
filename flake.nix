@@ -37,16 +37,8 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
     {
       darwinConfigurations =
-        let
-          system = "aarch64-darwin";
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        in
           {
             macos = nix-darwin.lib.darwinSystem {
-              inherit pkgs;
 
               modules = [
                 inputs.nix-homebrew.darwinModules.nix-homebrew

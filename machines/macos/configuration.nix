@@ -13,6 +13,11 @@
 
   time.timeZone = "Europe/Amsterdam";
 
+  nixpkgs = {
+    hostPlatform = "aarch64-darwin";
+    config.allowUnfree = true;
+  };
+
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
   system.stateVersion = 4;
