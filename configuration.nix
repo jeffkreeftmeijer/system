@@ -1,7 +1,10 @@
 { system, ... }:
 
 {
-  users.users.jeff.home = "/Users/jeff";
+  users.users.jeff = {
+    home = "/Users/jeff";
+    description = "Jeff Kreeftmeijer";
+  };
 
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
