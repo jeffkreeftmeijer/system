@@ -34,47 +34,46 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
-    {
-      darwinConfigurations =
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }: {
+    darwinConfigurations = {
+      macos = nix-darwin.lib.darwinSystem {
+
+        modules = [
+          inputs.nix-homebrew.darwinModules.nix-homebrew
           {
-            macos = nix-darwin.lib.darwinSystem {
+            nix-homebrew = {
+              enable = true;
+              user = "jeff";
 
-              modules = [
-                inputs.nix-homebrew.darwinModules.nix-homebrew
-                {
-                  nix-homebrew = {
-                    enable = true;
-                    user = "jeff";
+              taps = {
+                "homebrew/homebrew-core" = inputs.homebrew-core;
+                "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+              };
 
-                    taps = {
-                      "homebrew/homebrew-core" = inputs.homebrew-core;
-                      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-                      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-                    };
-
-                    mutableTaps = false;
-                  };
-                }
-                home-manager.darwinModules.home-manager
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.jeff = {
-                    home.username = "jeff";
-                    home.homeDirectory = "/Users/jeff";
-                    home.stateVersion = "23.11";
-
-                    programs.direnv.enable = true;
-                    programs.emacs.package = inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
-                  };
-                }
-                ./machines/macos/configuration.nix
-                ./modules
-                ./modules/darwin
-              ];
+              mutableTaps = false;
             };
-          };
+          }
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jeff = {
+              home.username = "jeff";
+              home.homeDirectory = "/Users/jeff";
+              home.stateVersion = "23.11";
+
+              programs.direnv.enable = true;
+              programs.emacs.package =
+                inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
+            };
+          }
+          ./machines/macos/configuration.nix
+          ./modules
+          ./modules/darwin
+        ];
+      };
+    };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       modules = [
         home-manager.nixosModules.home-manager
@@ -86,7 +85,8 @@
             home.homeDirectory = "/home/jeff";
             home.stateVersion = "23.11";
 
-            programs.emacs.package = inputs.configured-emacs.packages.aarch64-linux.configured-emacs;
+            programs.emacs.package =
+              inputs.configured-emacs.packages.aarch64-linux.configured-emacs;
           };
         }
         ./machines/nixos/configuration.nix
