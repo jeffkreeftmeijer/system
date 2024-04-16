@@ -7,6 +7,7 @@
     ./emacs.nix
     ./fonts.nix
     ./git.nix
+    ./gnumake.nix
     ./homebrew.nix
     ./keyboard.nix
     ./macos.nix
