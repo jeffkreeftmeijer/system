@@ -98,6 +98,7 @@
           };
         }
         ./machines/nixos/configuration.nix
+        ./modules
       ];
     };
   };
