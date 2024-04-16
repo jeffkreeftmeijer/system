@@ -1,6 +1,7 @@
 {
   imports = [
     ./atuin.nix
+    ./bash.nix
     ./coreutils.nix
     ./emacs.nix
     ./fonts.nix
