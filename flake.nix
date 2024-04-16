@@ -91,6 +91,7 @@
         }
         ./machines/nixos/configuration.nix
         ./modules
+        ./modules/linux
       ];
     };
   };
