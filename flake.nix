@@ -79,7 +79,7 @@
                     programs.direnv.enable = true;
                   };
                 }
-                ./configuration.nix
+                ./machines/macos/configuration.nix
                 ./wallpaper
                 ./modules
               ];
