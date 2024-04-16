@@ -2,7 +2,7 @@
 
 {
   fonts.fontDir.enable = true;
-  fonts.packages = [
+  fonts.fonts = [
     pkgs.iosevka-bin
     (pkgs.iosevka-bin.override { variant = "aile"; })
   ];
