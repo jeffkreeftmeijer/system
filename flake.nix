@@ -82,6 +82,7 @@
                 ./machines/macos/configuration.nix
                 ./wallpaper
                 ./modules
+                ./modules/darwin
               ];
             };
           };

@@ -1,23 +1,12 @@
 {
   imports = [
-    ./adblock.nix
     ./atuin.nix
     ./coreutils.nix
-    ./docker.nix
     ./emacs.nix
     ./fonts.nix
     ./git.nix
     ./gnumake.nix
-    ./homebrew.nix
-    ./keyboard.nix
-    ./macos.nix
-    ./slack.nix
-    ./spotify.nix
     ./starship.nix
-    ./utm.nix
-    ./whatsapp.nix
-    ./wireguard.nix
-    ./zoom.nix
     ./zsh.nix
   ];
 }
