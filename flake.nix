@@ -41,9 +41,6 @@
           system = "aarch64-darwin";
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [(final: prev: rec {
-              emacs = inputs.configured-emacs.packages.${system}.configured-emacs;
-            })];
             config.allowUnfree = true;
           };
         in
@@ -77,6 +74,7 @@
                     home.stateVersion = "23.11";
 
                     programs.direnv.enable = true;
+                    programs.emacs.package = inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
                   };
                 }
                 ./machines/macos/configuration.nix
@@ -95,6 +93,8 @@
             home.username = "jeff";
             home.homeDirectory = "/home/jeff";
             home.stateVersion = "23.11";
+
+            programs.emacs.package = inputs.configured-emacs.packages.aarch64-linux.configured-emacs;
           };
         }
         ./machines/nixos/configuration.nix
