@@ -12,5 +12,6 @@
     ./gnumake.nix
     ./starship.nix
     ./zsh.nix
+    ./zsh-completions.nix
   ];
 }

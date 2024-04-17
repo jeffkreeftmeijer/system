@@ -1,3 +1,5 @@
+{ pkgs, ... } :
+
 {
   programs.zsh.enable = true;
   home-manager.users.jeff.programs.zsh = {
