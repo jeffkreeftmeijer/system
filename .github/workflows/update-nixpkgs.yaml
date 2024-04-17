@@ -1,0 +1,21 @@
+name: Update nixpkgs
+
+on:
+  schedule:
+    - cron: "0 0 * * 6"
+  workflow_dispatch:
+
+jobs:
+  update-nixpkgs:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v19
+      - run: nix flake lock --update-input nixpkgs
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update nixpkgs
