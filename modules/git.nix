@@ -7,6 +7,6 @@
     signing.signByDefault = true;
     extraConfig.init.defaultBranch = "main";
     extraConfig.github.user = "jeffkreeftmeijer";
-    ignores = [ "DS_Store" ];
+    ignores = [ ".DS_Store" ];
   };
 }
