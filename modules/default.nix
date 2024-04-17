@@ -10,6 +10,7 @@
     ./git.nix
     ./gnupg.nix
     ./gnumake.nix
+    ./uutils.nix
     ./starship.nix
     ./zsh.nix
     ./zsh-completions.nix
