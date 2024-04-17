@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./spice.nix
-  ];
-}
+{ imports = [ ./spice.nix ]; }

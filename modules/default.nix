@@ -3,7 +3,7 @@
     ./atuin.nix
     ./bash.nix
     ./blesh.nix
-    ./coreutils.nix
+   #./coreutils.nix
     ./direnv.nix
     ./emacs.nix
     ./fonts.nix
