@@ -8,11 +8,11 @@
     ./emacs.nix
     ./fonts.nix
     ./git.nix
-    ./gnupg.nix
     ./gnumake.nix
-    ./uutils.nix
+    ./gnupg.nix
     ./starship.nix
-    ./zsh.nix
+    ./uutils.nix
     ./zsh-completions.nix
+    ./zsh.nix
   ];
 }
