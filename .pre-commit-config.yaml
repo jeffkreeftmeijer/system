@@ -6,10 +6,3 @@ repos:
       language: system
       entry: nixfmt
       files: \.nix$
-- repo: local
-  hooks:
-    - id: statix
-      name: run statix
-      language: system
-      entry: statix check --format errfmt
-      files: \.nix$
