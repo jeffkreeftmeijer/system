@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home-manager.users.jeff.home.packages = [ pkgs.blesh ];
