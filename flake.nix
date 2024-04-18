@@ -29,7 +29,7 @@
       flake = false;
     };
     configured-emacs = {
-      url = "github:jeffkreeftmeijer/.emacs.d/bankrupt";
+      url = "github:jeffkreeftmeijer/.emacs.d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
