@@ -56,15 +56,20 @@
           }
           home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jeff = {
-              home.username = "jeff";
-              home.homeDirectory = "/Users/jeff";
-              home.stateVersion = "23.11";
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
 
-              programs.emacs.package =
-                inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
+              users.jeff = {
+                home = {
+                  username = "jeff";
+                  homeDirectory = "/Users/jeff";
+                  stateVersion = "23.11";
+                };
+
+                programs.emacs.package =
+                  inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
+              };
             };
           }
           ./machines/macos/configuration.nix
@@ -77,15 +82,19 @@
       modules = [
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jeff = {
-            home.username = "jeff";
-            home.homeDirectory = "/home/jeff";
-            home.stateVersion = "23.11";
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.jeff = {
+              home = {
+                username = "jeff";
+                homeDirectory = "/home/jeff";
+                stateVersion = "23.11";
+              };
 
-            programs.emacs.package =
-              inputs.configured-emacs.packages.aarch64-linux.configured-emacs;
+              programs.emacs.package =
+                inputs.configured-emacs.packages.aarch64-linux.configured-emacs;
+            };
           };
         }
         ./machines/nixos/configuration.nix
