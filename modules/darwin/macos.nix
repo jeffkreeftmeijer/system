@@ -12,6 +12,7 @@
       "scroll-to-open" = true; # Scroll on a Dock icon to see its windows
     };
     "com.apple.finder" = {
+      CreateDesktop = false; # Don't show icons on the Desktop
       DisableAllAnimations = true; # Disable animations
       ShowStatusBar = true; # Show status bar
       ShowPathbar = true; # Show path bar (breadcrumbs)
