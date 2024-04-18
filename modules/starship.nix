@@ -7,17 +7,17 @@
       directory = {
         truncate_to_repo = false;
         truncation_length = 0;
-        style = "";
+        style = "fg:bright-cyan";
       };
       git_branch = {
         format = "[\\($branch(:$remote_branch)\\)]($style) ";
-        style = "";
+        style = "fg:bright-cyan";
       };
       shell = {
         zsh_indicator = "%";
         bash_indicator = "\\$";
         disabled = false;
-        style = "";
+        style = "fg:bright-cyan";
       };
     };
   };
