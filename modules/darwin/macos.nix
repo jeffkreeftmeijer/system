@@ -17,21 +17,17 @@
       ShowPathbar = true; # Show path bar (breadcrumbs)
       "_FXShowPosixPathInTitle" = true; # Show full path
     };
-    "com.apple.ical" = {
-      "Show Week Numbers" = true;
-    };
+    "com.apple.ical" = { "Show Week Numbers" = true; };
     "com.apple.safari" = {
       IncludeDevelopMenu = true;
       ShowFullURLInSmartSearchField = true;
       AutoFillPasswords = true;
     };
-    "com.apple.universalaccess" = {
-      reduceTransparency = true;
-    };
+    "com.apple.universalaccess" = { reduceTransparency = true; };
     NSGlobalDomain = {
       AppleShowAllFiles = true; # Show hidden files in Finder
       AppleShowAllExtensions = true; # Show file extensions in Finder
-      "com.apple.sound.beep.volume" = 0.000;
+      "com.apple.sound.beep.volume" = 0.0;
       InitialKeyRepeat = 15;
       KeyRepeat = 2;
     };
