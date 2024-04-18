@@ -2,7 +2,7 @@ switch:
 	nix --extra-experimental-features nix-command \
 	    --extra-experimental-features flakes \
 	    run nix-darwin -- switch --flake .#macos
-	killall Dock Finder
+	killall Dock Finder WindowManager
 
 update_nixpkgs:
 	nix flake lock --update-input nixpkgs
@@ -16,4 +16,5 @@ reset_defaults:
 	-defaults delete com.apple.ical
 	-defaults delete com.apple.safari
 	-defaults delete com.apple.universalaccess
+	-defaults delete com.apple.windowmanager
 	-defaults delete NSGlobalDomain

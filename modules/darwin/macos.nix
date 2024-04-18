@@ -25,6 +25,11 @@
       AutoFillPasswords = true;
     };
     "com.apple.universalaccess" = { reduceTransparency = true; };
+    "com.apple.windowmanager" = {
+      AppWindowGroupingBehavior = true; # Group windows by type
+      AutoHide = true; # Automatically hide Stage Manager
+      GloballyEnabled = true; # Enable Stage Manager
+    };
     NSGlobalDomain = {
       AppleShowAllFiles = true; # Show hidden files in Finder
       AppleShowAllExtensions = true; # Show file extensions in Finder
