@@ -6,6 +6,7 @@
       enable = true;
       settings = {
         style = "compact";
+        show_preview = true;
       };
     };
   };
