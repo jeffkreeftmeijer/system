@@ -18,6 +18,8 @@
     config.allowUnfree = true;
   };
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
   system.stateVersion = 4;
