@@ -31,7 +31,7 @@
     "com.apple.windowmanager" = {
       AppWindowGroupingBehavior = true; # Group windows by type
       AutoHide = true; # Automatically hide Stage Manager
-      GloballyEnabled = true; # Enable Stage Manager
+      GloballyEnabled = false; # Disable Stage Manager
     };
     NSGlobalDomain = {
       AppleShowAllFiles = true; # Show hidden files in Finder
