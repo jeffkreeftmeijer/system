@@ -10,6 +10,7 @@
     ./wallpaper
     ./whatsapp.nix
     ./wireguard.nix
+    ./yabai.nix
     ./zoom.nix
     ./pinentry-touchid.nix
   ];
