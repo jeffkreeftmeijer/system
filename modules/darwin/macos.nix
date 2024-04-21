@@ -19,6 +19,9 @@
       "_FXShowPosixPathInTitle" = true; # Show full path
     };
     "com.apple.ical" = { "Show Week Numbers" = true; };
+    "com.apple.screensaver" = {
+      idleTime = 0; # Disable screen saver
+    };
     "com.apple.safari" = {
       IncludeDevelopMenu = true;
       ShowFullURLInSmartSearchField = true;
