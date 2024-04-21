@@ -7,7 +7,7 @@
     ./slack.nix
     ./spotify.nix
     ./utm.nix
-    ./wallpaper.nix
+    ./wallpaper
     ./whatsapp.nix
     ./wireguard.nix
     ./zoom.nix
