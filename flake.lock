@@ -171,6 +171,22 @@
         "type": "github"
       }
     },
+    "jorgelbg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659632777,
+        "narHash": "sha256-UYDGOSuC0myzp5jb03xCiqE+nMMMHIZ3eWiM83hVPKA=",
+        "owner": "jorgelbg",
+        "repo": "homebrew-tap",
+        "rev": "95c37690b5a0a97c290ccace9f35068e7a222da8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jorgelbg",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -255,6 +271,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "jorgelbg": "jorgelbg",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"

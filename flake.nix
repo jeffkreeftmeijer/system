@@ -28,6 +28,10 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+    jorgelbg = {
+      url = "github:jorgelbg/homebrew-tap";
+      flake = false;
+    };
     configured-emacs = {
       url = "github:jeffkreeftmeijer/.emacs.d";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,6 +53,7 @@
                 "homebrew/homebrew-core" = inputs.homebrew-core;
                 "homebrew/homebrew-cask" = inputs.homebrew-cask;
                 "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+                "jorgelbg/homebrew-tap" = inputs.jorgelbg;
               };
 
               mutableTaps = false;

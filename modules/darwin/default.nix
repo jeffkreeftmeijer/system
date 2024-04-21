@@ -11,5 +11,6 @@
     ./whatsapp.nix
     ./wireguard.nix
     ./zoom.nix
+    ./pinentry-touchid.nix
   ];
 }
