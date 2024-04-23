@@ -2,7 +2,7 @@
   imports = [
     ./atuin.nix
     ./bash.nix
-    ./blesh.nix
+    #./blesh.nix
     #./coreutils.nix
     ./direnv.nix
     ./emacs.nix
