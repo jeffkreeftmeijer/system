@@ -5,7 +5,7 @@
     atuin = {
       enable = true;
       settings = {
-        style = "compact";
+        style = "full";
         show_preview = true;
       };
     };
