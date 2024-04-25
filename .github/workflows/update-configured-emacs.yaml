@@ -1,6 +1,10 @@
 name: Update configured-emacs
 
-on: [workflow_dispatch, repository_dispatch]
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  repository_dispatch:
 
 jobs:
   update-configured-emacs:
