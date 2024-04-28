@@ -12,6 +12,7 @@
     ./gnupg.nix
     ./nixd.nix
     ./notmuch.nix
+    ./ripgrep.nix
     ./starship.nix
     ./uutils.nix
     ./zsh-completions.nix
