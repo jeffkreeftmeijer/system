@@ -1,6 +1,7 @@
 {
   imports = [
     ./atuin.nix
+    ./aspell.nix
     ./bash.nix
     #./blesh.nix
     #./coreutils.nix
