@@ -2,5 +2,5 @@
 
 {
   home-manager.users.jeff.home.packages =
-    [ (pkgs.aspellWithDicts (dicts: [ dicts.en ])) ];
+    [ (pkgs.aspellWithDicts (dicts: [ dicts.en dicts.en-computers ])) ];
 }
