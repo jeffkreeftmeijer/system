@@ -9,6 +9,7 @@
     ./git.nix
     ./gnumake.nix
     ./gnupg.nix
+    ./gnuplot.nix
     ./nixd.nix
     ./notmuch.nix
     ./ripgrep.nix
