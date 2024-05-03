@@ -5,6 +5,7 @@
     #./coreutils.nix
     ./direnv.nix
     ./emacs.nix
+    ./fd.nix
     ./fonts.nix
     ./git.nix
     ./gnumake.nix
