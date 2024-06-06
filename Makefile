@@ -15,6 +15,9 @@ build:
 update_nixpkgs:
 	nix flake lock --update-input nixpkgs
 
+update_cask:
+	nix flake lock --update-input homebrew-cask
+
 update_emacs:
 	nix flake lock --update-input configured-emacs
 
