@@ -80,6 +80,11 @@
   services.openssh.enable = true;
   services.spice-webdavd.enable = true;
 
+  fileSystems."/mnt/media" = {
+    device = "http://127.0.0.1:9843/";
+    fsType = "davfs";
+  };
+
   programs.git.enable = true;
 
   services.radarr = {
