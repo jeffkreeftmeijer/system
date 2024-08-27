@@ -78,6 +78,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.spice-webdavd.enable = true;
 
   programs.git.enable = true;
 
