@@ -81,7 +81,10 @@
 
   programs.git.enable = true;
 
-  services.radarr.enable = true;
+  services.radarr = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
