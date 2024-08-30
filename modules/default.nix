@@ -2,7 +2,6 @@
   imports = [
     ./atuin.nix
     ./aspell.nix
-    #./coreutils.nix
     ./direnv.nix
     ./emacs.nix
     ./fd.nix
