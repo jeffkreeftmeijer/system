@@ -1,6 +1,5 @@
 {
   imports = [
-    ./docker.nix
     ./firefox.nix
     ./homebrew.nix
     ./keyboard.nix
