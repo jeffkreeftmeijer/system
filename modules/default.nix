@@ -10,6 +10,7 @@
     ./git.nix
     ./gnumake.nix
     ./gnupg.nix
+    ./kubectl.nix
     ./nixd.nix
     ./notmuch.nix
     ./privoxy.nix
