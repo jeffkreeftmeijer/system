@@ -3,6 +3,7 @@
     ./atuin.nix
     ./aspell.nix
     ./direnv.nix
+    ./docker.nix
     ./emacs.nix
     ./fd.nix
     ./fonts.nix
