@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./apple-silicon-support
+      ./modules/gnome.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
