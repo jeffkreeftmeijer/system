@@ -19,6 +19,8 @@
   # Specify path to peripheral firmware files
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
 
+  nix.settings.experimental-features = "nix-command flakes";
+
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
