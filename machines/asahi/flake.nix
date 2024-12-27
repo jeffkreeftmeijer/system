@@ -14,6 +14,7 @@
         modules = [
           ./configuration.nix
           ./../../modules/atuin.nix
+          ./../../modules/firefox.nix
           ./../../modules/git.nix
           ./../../modules/gnome.nix
           ./../../modules/gnumake.nix
