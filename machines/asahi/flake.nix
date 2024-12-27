@@ -21,6 +21,8 @@
           ./../../modules/home-manager.nix
           ./../../modules/starship.nix
           ./../../modules/vim.nix
+          ./../../modules/zsh.nix
+          ./../../modules/zsh-completions.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
