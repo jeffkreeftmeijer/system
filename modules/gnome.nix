@@ -6,6 +6,9 @@
   programs.dconf.enable = true;
 
   home-manager.users.jeff.dconf.settings = {
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = ["caps:escape"];
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
