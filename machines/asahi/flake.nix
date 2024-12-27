@@ -18,6 +18,7 @@
           ./../../modules/git.nix
           ./../../modules/gnome.nix
           ./../../modules/gnumake.nix
+          ./../../modules/home-manager.nix
           ./../../modules/starship.nix
           home-manager.nixosModules.home-manager
           {
