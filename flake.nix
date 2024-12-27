@@ -13,6 +13,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./modules/atuin.nix
           ./modules/gnome.nix
           home-manager.nixosModules.home-manager
           {
