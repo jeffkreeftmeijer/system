@@ -1,7 +1,7 @@
 .PHONY: switch update-apple-silicon-support
 
 switch:
-	sudo nixos-rebuild switch --flake ./machines/asahi#nixos
+	sudo nixos-rebuild switch --flake ./machines/asahi#asahi
 
 update-apple-silicon-support:
 	git clone https://github.com/tpwrules/nixos-apple-silicon.git
