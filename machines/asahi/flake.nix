@@ -14,6 +14,7 @@
         modules = [
           ./configuration.nix
           ./../../modules/atuin.nix
+          ./../../modules/git.nix
           ./../../modules/gnome.nix
           ./../../modules/starship.nix
           home-manager.nixosModules.home-manager
