@@ -6,6 +6,10 @@
   programs.dconf.enable = true;
 
   home-manager.users.jeff.dconf.settings = {
+    "org/gnome/desktop/background" ={
+      picture-uri = "file:///home/jeff/system/assets/win95.png";
+      picture-uri-dark = "file:///home/jeff/system/assets/win95.png";
+    };
     "org/gnome/desktop/input-sources" = {
       xkb-options = ["caps:escape"];
     };
