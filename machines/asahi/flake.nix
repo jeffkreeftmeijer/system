@@ -16,6 +16,7 @@
           ./../../modules/atuin.nix
           ./../../modules/git.nix
           ./../../modules/gnome.nix
+          ./../../modules/gnumake.nix
           ./../../modules/starship.nix
           home-manager.nixosModules.home-manager
           {
