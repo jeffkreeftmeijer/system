@@ -20,6 +20,7 @@
           ./../../modules/gnumake.nix
           ./../../modules/home-manager.nix
           ./../../modules/starship.nix
+          ./../../modules/vim.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
