@@ -18,6 +18,7 @@
           ./../../modules/git.nix
           ./../../modules/gnome.nix
           ./../../modules/gnumake.nix
+          ./../../modules/gnupg.nix
           ./../../modules/home-manager.nix
           ./../../modules/pass.nix
           ./../../modules/starship.nix
