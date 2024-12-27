@@ -13,9 +13,9 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./modules/atuin.nix
-          ./modules/gnome.nix
-          ./modules/starship.nix
+          ./../../modules/atuin.nix
+          ./../../modules/gnome.nix
+          ./../../modules/starship.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
