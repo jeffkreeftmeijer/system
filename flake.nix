@@ -15,6 +15,7 @@
           ./configuration.nix
           ./modules/atuin.nix
           ./modules/gnome.nix
+          ./modules/starship.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
