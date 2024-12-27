@@ -1,4 +1,7 @@
-.PHONY: update-apple-silicon-support
+.PHONY: switch update-apple-silicon-support
+
+switch:
+	nixos-rebuild switch --flake .#nixos
 
 update-apple-silicon-support:
 	git clone https://github.com/tpwrules/nixos-apple-silicon.git
