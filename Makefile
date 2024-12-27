@@ -1,6 +1,9 @@
-.PHONY: switch build update_nixpkgs update_emacs reset_defaults
+.PHONY: switch-nixos switch-macos build update_nixpkgs update_emacs reset_defaults update-apple-silicon-support
 
-switch: build
+switch-nixos: 
+	sudo nixos-rebuild switch --flake ./machines/asahi#asahi
+
+switch-macos: build
 	nix --extra-experimental-features nix-command \
 	    --extra-experimental-features flakes \
 	    run nix-darwin -- switch --flake .#macos
@@ -29,3 +32,8 @@ reset_defaults:
 	-defaults delete com.apple.universalaccess
 	-defaults delete com.apple.windowmanager
 	-defaults delete NSGlobalDomain
+
+update-apple-silicon-support:
+	git clone https://github.com/tpwrules/nixos-apple-silicon.git
+	cp -r nixos-apple-silicon/apple-silicon-support/ .
+	rm -r nixos-apple-silicon/
