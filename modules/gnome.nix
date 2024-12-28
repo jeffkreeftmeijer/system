@@ -10,6 +10,9 @@
       picture-uri = "file:///home/jeff/system/assets/win95.png";
       picture-uri-dark = "file:///home/jeff/system/assets/win95.png";
     };
+    "org/gnome/desktop/datetime" = {
+      automatic-timezone = true;
+    };
     "org/gnome/desktop/input-sources" = {
       xkb-options = ["caps:escape"];
     };
