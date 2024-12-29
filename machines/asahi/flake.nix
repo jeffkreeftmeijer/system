@@ -21,6 +21,7 @@
         modules = [
           ./configuration.nix
           ./../../modules/atuin.nix
+          ./../../modules/dbus.nix
           ./../../modules/emacs.nix
           ./../../modules/exwm.nix
           ./../../modules/firefox.nix
