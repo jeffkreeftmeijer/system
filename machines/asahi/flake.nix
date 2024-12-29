@@ -23,6 +23,7 @@
           ./../../modules/atuin.nix
           ./../../modules/emacs.nix
           ./../../modules/firefox.nix
+          ./../../modules/fonts.nix
           ./../../modules/git.nix
           ./../../modules/gnome.nix
           ./../../modules/gnumake.nix
