@@ -24,6 +24,7 @@
           ./../../modules/emacs.nix
           ./../../modules/firefox.nix
           ./../../modules/fonts.nix
+          ./../../modules/gdm.nix
           ./../../modules/git.nix
           ./../../modules/gnome.nix
           ./../../modules/gnumake.nix
