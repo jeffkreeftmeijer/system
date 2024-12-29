@@ -4,7 +4,7 @@
     atuin = {
       enable = true;
       settings = {
-        style = "full";
+        style = "compact";
         show_preview = true;
       };
     };
