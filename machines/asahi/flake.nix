@@ -22,6 +22,7 @@
           ./configuration.nix
           ./../../modules/atuin.nix
           ./../../modules/emacs.nix
+          ./../../modules/exwm.nix
           ./../../modules/firefox.nix
           ./../../modules/fonts.nix
           ./../../modules/gdm.nix
