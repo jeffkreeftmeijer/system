@@ -11,10 +11,13 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, configured-emacs, ... }:
+  let
+    system = "aarch64-linux";
+  in
+  {
     nixosConfigurations = {
       asahi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
           ./configuration.nix
           ./../../modules/atuin.nix
@@ -32,6 +35,7 @@
           ./../../modules/zsh-completions.nix
           home-manager.nixosModules.home-manager
           {
+            home-manager.extraSpecialArgs = { inherit configured-emacs system; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jeff = import ./home.nix;
