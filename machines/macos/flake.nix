@@ -96,29 +96,5 @@
         ];
       };
     };
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
-      modules = [
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.jeff = {
-              home = {
-                username = "jeff";
-                homeDirectory = "/home/jeff";
-                stateVersion = "23.11";
-              };
-
-              programs.emacs.package =
-                inputs.configured-emacs.packages.aarch64-linux.configured-emacs;
-            };
-          };
-        }
-        ./machines/nixos/configuration.nix
-        ./modules
-        ./modules/linux
-      ];
-    };
   };
 }
