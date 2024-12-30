@@ -2,6 +2,7 @@
   imports = [
     ./atuin.nix
     ./aspell.nix
+    ./comma.nix
     ./direnv.nix
     ./docker.nix
     ./emacs.nix
