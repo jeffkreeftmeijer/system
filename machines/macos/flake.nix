@@ -89,10 +89,10 @@
               ];
             };
           }
-          ./machines/macos/configuration.nix
-          ./modules
-          ./modules/darwin
-          ./modules/alacritty.nix
+          ./configuration.nix
+          ./../../modules
+          ./../../modules/darwin
+          ./../../modules/alacritty.nix
         ];
       };
     };
