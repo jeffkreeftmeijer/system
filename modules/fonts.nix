@@ -2,5 +2,5 @@
 
 {
   fonts.packages =
-    [ pkgs.iosevka-bin (pkgs.iosevka-bin.override { variant = "aile"; }) ];
+    [ pkgs.iosevka-bin (pkgs.iosevka-bin.override { variant = "Aile"; }) ];
 }
