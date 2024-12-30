@@ -36,6 +36,10 @@
       url = "github:jeffkreeftmeijer/.emacs.d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }: {
@@ -75,6 +79,10 @@
                 programs.emacs.package =
                   inputs.configured-emacs.packages.aarch64-darwin.configured-emacs;
               };
+
+              sharedModules = [
+                inputs.mac-app-util.homeManagerModules.default
+              ];
             };
           }
           ./machines/macos/configuration.nix
