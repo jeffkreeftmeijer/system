@@ -33,6 +33,7 @@
           ./../../modules/gnupg.nix
           ./../../modules/home-manager.nix
           ./../../modules/pass.nix
+          ./../../modules/pinentry-gnome3.nix
           ./../../modules/ripgrep.nix
           ./../../modules/starship.nix
           ./../../modules/vim.nix
