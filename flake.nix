@@ -15,6 +15,7 @@
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-darwin.follows = "nix-darwin";
+      inputs.flake-utils.follows = "flake-utils";
     };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -32,13 +33,16 @@
       url = "github:jorgelbg/homebrew-tap";
       flake = false;
     };
+    flake-utils.url = "github:numtide/flake-utils";
     configured-emacs = {
       url = "github:jeffkreeftmeijer/.emacs.d";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     mac-app-util = {
       url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
